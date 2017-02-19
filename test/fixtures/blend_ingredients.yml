@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  blend_id: 1
+  ingredient_id: 1
+  measurement: MyString
+
+two:
+  blend_id: 1
+  ingredient_id: 1
+  measurement: MyString

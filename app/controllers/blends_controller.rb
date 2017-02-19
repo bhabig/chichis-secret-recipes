@@ -1,0 +1,2 @@
+class BlendsController < ApplicationController
+end
