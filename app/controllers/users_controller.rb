@@ -28,7 +28,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
+    if check_password
+      @user.update(user_params)
+      @user.standardize_name
+      if @user.save
+        redirect_to user_path(@user)
+      else
+        render :edit
+      end
+    end
   end
 
   def destroy
@@ -43,10 +51,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
   def matching_password?
     params[:user][:password] == params[:user][:password_confirmation]
+  end
+
+  def check_password
+    !params[:user][:password].nil? && !params[:user][:password_confirmation].nil?
   end
 end
