@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     if password? && matching_password?
       @user = User.new(user_params)
+      @user.standardize_name
       if @user.save
         session[:user_id] = @user.id
         redirect_to user_path(@user)
@@ -21,19 +22,22 @@ class UsersController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
-
+    binding.pry
   end
 
   def destroy
-
+    user = User.find_by(id: params[:id])
+    if user && user == current_user
+      session.clear
+      user.destroy
+      redirect_to root_path, alert: "account deleted succesfully"
+    end
   end
 
   private
