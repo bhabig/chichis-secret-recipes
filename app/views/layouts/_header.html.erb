@@ -1,9 +1,9 @@
 <% if !session[:user_id] %>
   <%= link_to "Sign In", new_session_path %>
-   <strong>||</strong>
+   <strong>|</strong>
    <%= link_to "Sign Up", new_user_path %>
 <% else %>
   <%= link_to "Sign Out", session_path(session[:user_id]), method: "delete" %>
-    <strong>||</strong>
+    <strong>|</strong>
     <%= link_to "Profile", user_path(session[:user_id]) %>
 <% end %>
