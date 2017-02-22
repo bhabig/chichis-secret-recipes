@@ -1,1 +1,7 @@
-<h2>Welcome!</h2>
+<%= render 'layouts/title-header' %>
+<div class="not-signed-in-header">
+
+  <%= link_to "SIGN IN", new_session_path, id: "registration1" %>
+   <strong>|</strong>
+   <%= link_to "SIGN UP", new_user_path, id: "registration2" %>
+</div>

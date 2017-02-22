@@ -1,13 +1,19 @@
-<h2>Welcome. Sign In Below to View ChiChi's Secret Recipe Book</h2>
-<%= form_for @user, url: sessions_path do |f| %>
-  <%= f.label "Name:" %>
-  <%= f.text_field :name %>
-  <br></br>
-  <%= f.label "Email:" %>
-  <%= f.text_field :email %>
-  <br></br>
-  <%= f.label "Password:" %>
-  <%= f.password_field :password %>
-  <br></br>
-  <%= f.submit "Sign In" %>
-<% end %>
+<%= render 'layouts/title-header' %>
+<div class="not-signed-in-header">
+
+  <h2>Sign In Below</h2>
+  <%= form_for @user, url: sessions_path do |f| %>
+    <%= f.label "Name:" %>
+    <%= f.text_field :name %>
+    </br>
+    <%= f.label "Email:" %>
+    <%= f.text_field :email %>
+    </br>
+    <%= f.label "Password:" %>
+    <%= f.password_field :password %>
+    </br>
+    <%= f.submit "Sign In" %>
+  <% end %>
+  <h4 style="color:rgba(225, 225, 225, 0.95);"><strong>OR<strong></h4>
+  <%= link_to "SIGN UP", new_user_path, id: "registration2" %>
+</div>

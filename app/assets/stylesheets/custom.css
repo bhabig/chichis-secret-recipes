@@ -14,23 +14,91 @@ body {
     line-height: 18px;
   }
 
-  .header {
-    background-color: rgba(23, 29, 34, 0.70);
+  .not-signed-in-header {
+    background-color: rgba(23, 29, 34, 0.75);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
-
     text-align: center;
-    margin: 16px auto;
+    margin: -100px auto;
     max-width: 1020px;
     padding: 1.0%; /* 18px / 800px */
     width: 87.5%;
   }
 
-  .header h1 {
-    color: rgba(252, 193, 0, 0.95);
-    font-size: 375%;
-    font-style: italic;
+  .signed-in-header {
+    background-color: rgba(23, 29, 34, 0.75);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    text-align: center;
+    margin: 16px none;
+    max-width: 1020px; /* 18px / 800px */
+    width: 87.5%;
+    display: block;
+  }
+
+  h1 {
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    background-color: rgba(23, 29, 34, 1);
+    color: rgba(195, 0, 0, 1);
+    font-size: 300%;
+    margin: 100px auto;
+    text-decoration: underline overline;
+    text-align: center;
+    position: inline-block;
+    padding: 1.0%;
+    max-width: 1020px;
+  }
+
+  #registration1 {
+    background-color: rgba(23, 29, 34, 0.85);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: rgba(225, 225, 225, 0.95);
+    text-align: center;
+    font-size: 100%;
+    margin: 10px auto;
+    max-width: 1020px;
+    padding: 1.0%; /* 18px / 800px */
+    width: auto;
+    display: inline-block;
+    border: 2px solid rgba(195, 0, 0, 1);
+    text-decoration: none;
+  }
+
+  #registration2 {
+    background-color: rgba(23, 29, 34, 0.85);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: rgba(225, 225, 225, 0.95);
+    text-align: center;
+    font-size: 100%;
+    margin: 10px auto;
+    max-width: 1020px;
+    padding: 1.0%; /* 18px / 800px */
+    width: auto;
+    display: inline-block;
+    border: 2px solid rgba(195, 0, 0, 1);
+    text-decoration: none;
+  }
+
+  .not-signed-in-header h2 {
+    color: rgba(195, 0, 0, 1);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .new_user {
+    color: rgba(225, 225, 225, 0.95);
+    padding: 2%;
+    width: 50px center;
+    font-weight: bold;
+    text-align: center;
   }
 
   .wrapper {
@@ -48,5 +116,5 @@ body {
   }
 
   .wrapper h2 {
-    color: #C11B17;
+    color: rgba(195, 0, 0, 1);
   }
