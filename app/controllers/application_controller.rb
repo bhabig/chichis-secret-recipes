@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :current_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :logged_in?, only: [:new, :create, :edit, :update, :destroy]
 
   private
 
@@ -13,6 +15,14 @@ class ApplicationController < ActionController::Base
 
   def password?
     params[:user][:password] || !params[:user][:password].nil?
+  end
+
+  def matching_password?
+    params[:user][:password] == params[:user][:password_confirmation]
+  end
+
+  def check_password
+    !params[:user][:password].nil? && !params[:user][:password_confirmation].nil?
   end
 
 end

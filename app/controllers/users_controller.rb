@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -22,6 +20,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if logged_in? && current_user
+      render :show
+    end
   end
 
   def edit
@@ -54,11 +55,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def matching_password?
-    params[:user][:password] == params[:user][:password_confirmation]
-  end
-
-  def check_password
-    !params[:user][:password].nil? && !params[:user][:password_confirmation].nil?
-  end
 end
