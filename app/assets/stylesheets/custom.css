@@ -15,7 +15,7 @@ body {
   }
 
   .not-signed-in-header {
-    background-color: rgba(23, 29, 34, 0.75);
+    background-color: rgba(20, 20, 20, 0.75);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -30,7 +30,7 @@ body {
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    background-color: rgba(23, 29, 34, 1);
+    background-color: rgba(12, 12, 12, 1);
     color: rgba(195, 0, 0, 1);
     font-size: 300%;
     margin: 100px auto;
@@ -42,7 +42,7 @@ body {
   }
 
   #registration1 {
-    background-color: rgba(23, 29, 34, 0.85);
+    background-color: rgba(20, 20, 20, 0.85);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -58,8 +58,12 @@ body {
     text-decoration: none;
   }
 
+  #registration1:hover {
+    opacity: 0.55;
+  }
+
   #registration2 {
-    background-color: rgba(23, 29, 34, 0.85);
+    background-color: rgba(20, 20, 20, 0.85);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -73,6 +77,10 @@ body {
     display: inline-block;
     border: 2px solid rgba(195, 0, 0, 1);
     text-decoration: none;
+  }
+
+  #registration2:hover {
+    opacity: 0.55;
   }
 
   .not-signed-in-header h2 {
@@ -119,8 +127,12 @@ body {
     text-decoration: none;
   }
 
+  #header-link:hover {
+    opacity: 0.55;
+  }
+
   .signed-in {
-    background: rgba(241, 241, 241, 0.90);
+    background: rgba(241, 241, 241, 0.925);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
