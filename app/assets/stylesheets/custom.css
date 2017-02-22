@@ -22,20 +22,8 @@ body {
     text-align: center;
     margin: -100px auto;
     max-width: 1020px;
-    padding: 1.0%; /* 18px / 800px */
+    padding: 3.5%; /* 18px / 800px */
     width: 87.5%;
-  }
-
-  .signed-in-header {
-    background-color: rgba(23, 29, 34, 0.75);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    text-align: center;
-    margin: 16px none;
-    max-width: 1020px; /* 18px / 800px */
-    width: 87.5%;
-    display: block;
   }
 
   h1 {
@@ -101,20 +89,50 @@ body {
     text-align: center;
   }
 
-  .wrapper {
-    background: #f1f1f1;
+  .signed-in-header {
+    background-color: rgba(23, 29, 34, 1);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    text-align: center;
+    color: white;
+    margin: auto auto;
+    max-width: 1020px;
+    width: 90%;
+    display: block;
+  }
+
+  #header-link {
+    background-color: rgba(23, 29, 34, 0.85);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: rgba(225, 225, 225, 0.95);
+    text-align: center;
+    font-size: 75%;
+    margin: 7px auto;
+    max-width: 1020px;
+    padding: 0.75%; /* 18px / 800px */
+    width: auto;
+    display: inline-block;
+    border: 2px solid rgba(195, 0, 0, 1);
+    text-decoration: none;
+  }
+
+  .signed-in {
+    background: rgba(241, 241, 241, 0.90);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
     color: #4f3639;
-    opacity: 0.90;
-    margin: 16px auto;
+    margin: auto auto;
     max-width: 1020px;
     padding: 1.75%; /* 18px / 800px */
-    width: 87.5%;
-    border: 2px #171d22
+    width: 90%;
+    border: 2px rgba(195, 0, 0, 0.90);
+    position: inline-block;
   }
 
-  .wrapper h2 {
+  .signed-in h2 {
     color: rgba(195, 0, 0, 1);
-  }
+ }

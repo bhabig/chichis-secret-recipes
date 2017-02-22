@@ -3,16 +3,16 @@
 
   <h2>Sign In Below</h2>
   <%= form_for @user, url: sessions_path do |f| %>
-    <%= f.label "Name:" %>
+    <%= f.label "NAME:" %>
     <%= f.text_field :name %>
     </br>
-    <%= f.label "Email:" %>
+    <%= f.label "EMAIL:" %>
     <%= f.text_field :email %>
     </br>
-    <%= f.label "Password:" %>
+    <%= f.label "PASSWORD:" %>
     <%= f.password_field :password %>
     </br>
-    <%= f.submit "Sign In" %>
+    <%= f.submit "SIGN IN" %>
   <% end %>
   <h4 style="color:rgba(225, 225, 225, 0.95);"><strong>OR<strong></h4>
   <%= link_to "SIGN UP", new_user_path, id: "registration2" %>

@@ -1,5 +1,8 @@
-<% if session[:user_id] %>
-  <%= link_to "SIGN OUT", session_path(session[:user_id]), method: "delete" %>
-    <strong>|</strong>
-    <%= link_to "PROFILE", user_path(session[:user_id]) %>
-<% end %>
+<div class="signed-in-header">
+  <% if session[:user_id] %>
+    <%= link_to "SIGN OUT", session_path(session[:user_id]), method: "delete", id: "header-link"%>
+    <%= link_to "PROFILE", user_path(session[:user_id]), id: "header-link" %>
+    <%= link_to "UPDATE ACCOUNT", edit_user_path(@user), id: "header-link" %>
+    <%= link_to "DELETE ACCOUNT", user_path(@user), method: "delete", id: "header-link"%>
+  <% end %>
+</div>
