@@ -1,2 +1,3 @@
 <h2>YOU MADE IT, <%= @user.name.upcase %>!</h2>
-<%= link_to "your recipes", user_recipes_path(@user) %>
+<%= link_to "YOUR RECIPES", user_recipes_path(@user), id: "nav-link" %>
+<%= link_to "ADD RECIPE", new_user_recipe_path(@user), id: "nav-link" %>

@@ -131,6 +131,26 @@ body {
     opacity: 0.55;
   }
 
+  #nav-link {
+    background-color: rgba(20, 20, 20, 0.85);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: rgba(225, 225, 225, 0.95);
+    font-size: 85%;
+    text-align: center;
+    margin: 3px auto;
+    max-width: 1020px;
+    padding: 0.5%; /* 18px / 800px */
+    width: auto;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  #nav-link:hover {
+    opacity: 0.55;
+  }
+
   .signed-in {
     background: rgba(241, 241, 241, 0.925);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);

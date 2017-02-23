@@ -5,5 +5,11 @@ class Recipe < ApplicationRecord
 
   validates_presence_of :name, :cook_time, :instructions
 
+  attr_reader :ingredient_attributes
+
+  def ingredient_attributes=(t)
+    binding.pry
+  end
+
   #method to make cook_time readable
 end

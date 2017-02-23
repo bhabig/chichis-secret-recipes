@@ -14,7 +14,16 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = @user.recipes.build
-    10.times{@recipe.ingredients.biuld}
+  end
+
+  def create
+    binding.pry
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :allergen_warning, :cook_time, :category, :instructions, :type, :user_id, ingredient_attributes: [:name, :allergen_warning, :type, :measurement, :spice_level], ingredient_ids: [])
   end
 
 end
