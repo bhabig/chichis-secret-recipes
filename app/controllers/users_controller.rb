@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to user_path(@user), alert: "you are already signed in. you must sign out before creating a new account."
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -22,10 +26,17 @@ class UsersController < ApplicationController
   def show
     if logged_in? && current_user
       render :show
+    else
+      redirect_to root_path, alert: "must be logged in to see this page"
     end
   end
 
   def edit
+    if logged_in? && current_user
+      render :edit
+    else
+      redirect_to root_path, alert: "must be logged in to see this page"
+    end
   end
 
   def update
@@ -33,7 +44,7 @@ class UsersController < ApplicationController
       @user.update(user_params)
       @user.standardize_name
       if @user.save
-        redirect_to user_path(@user)
+        redirect_to root_path
       else
         render :edit
       end
@@ -41,11 +52,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find_by(id: params[:id])
-    if user && user == current_user
-      session.clear
-      user.destroy
-      redirect_to root_path, alert: "account deleted succesfully"
+    if logged_in? && current_user
+      user = User.find_by(id: params[:id])
+      if user && user == current_user
+        session.clear
+        user.destroy
+        redirect_to root_path, alert: "account deleted succesfully"
+      end
+    else
+      redirect_to :back, alert: "must be logged in to delete an account"
     end
   end
 

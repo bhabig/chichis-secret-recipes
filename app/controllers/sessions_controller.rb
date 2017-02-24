@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
   before_action :logged_in?, only: [:destroy]
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to user_path(@user), alert: "you are already signed in. you must sign out before signing into a different account."
+    else
+      @user = User.new
+    end
   end
 
   def create

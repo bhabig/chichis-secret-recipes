@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222224258) do
+ActiveRecord::Schema.define(version: 20170223215001) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "allergen_warning"
+    t.boolean  "allergen_warning", default: false
     t.integer  "spice_level"
-    t.integer  "type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "ingredient_type"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer  "meal_id"
+    t.integer  "recipe_id"
     t.integer  "ingredient_id"
     t.string   "measurement"
     t.datetime "created_at",    null: false
