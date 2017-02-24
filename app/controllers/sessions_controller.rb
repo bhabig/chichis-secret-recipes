@@ -10,6 +10,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  def facebook
+    omni_hash = request.env["omniauth.auth"]
+    user = User.find_or_create_by_omniauth(omni_hash)
+    session[:user_id] = user.try(:id)
+    redirect_to root_path
+  end
+
   def create
     @user = User.where("lower(name) = ?", params[:user][:name].downcase).first
     if @user && @user.authenticate(params[:user][:password])
@@ -23,6 +30,10 @@ class SessionsController < ApplicationController
   def destroy
     session.destroy
     redirect_to root_path
+  end
+
+  def auth
+   request.env['omniauth.auth']
   end
 
 end

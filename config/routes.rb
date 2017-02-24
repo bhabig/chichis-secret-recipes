@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   resources :blends
 
   resources :sessions, only: [:new, :create, :destroy]
-  
+  get '/auth/facebook/callback', to: 'sessions#facebook'
+
 end
