@@ -16,12 +16,17 @@ class RecipesController < ApplicationController
   end
 
   def create
-    form_errors = Ingredient.validation_checks(params)
-    if !form_errors.empty?
-      redirect_to new_user_recipe_path(current_user), alert: "#{form_errors.length} ingredients already exist, but have different attributes. please review carefully."
+    name_errors = Ingredient.validation_checks(params)
+    if !name_errors.empty?
+      redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
-      @recipe = Recipe.create(recipe_params)
-      binding.pry
+      other_errors = Ingredient.attribute_checks(params)
+      if other_errors.empty?
+        @recipe = Recipe.create(recipe_params)
+        binding.pry
+      else
+        redirect_to new_user_recipe_path(current_user), alert: "#{other_errors.length} ingredient forms had 1 or more emnpty fields."
+      end
     end
   end
 

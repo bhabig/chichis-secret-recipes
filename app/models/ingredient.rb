@@ -25,6 +25,15 @@ class Ingredient < ApplicationRecord
     errors_array
   end
 
+  def self.attribute_checks(params)
+    bad_ingredients = []
+    @y = params[:recipe][:ingredient_attributes].map do |num, hash|
+      hash.except("measurement").map{|key, val| key if val.empty?}
+    end
+    @y.each{|array| bad_ingredients << array unless array.compact.empty?}
+    bad_ingredients
+  end
+
   #need method for allergen_warning
 
   #need method for spice_level
