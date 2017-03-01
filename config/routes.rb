@@ -11,19 +11,12 @@ Rails.application.routes.draw do
   resources :recipes
 
   resources :recipes do
-    resources :blends
-    resources :ingredients
-  end
-
-  resources :blends do
     resources :ingredients
   end
 
   resources :ingredients
 
-  resources :blends
-
   resources :sessions, only: [:new, :create, :destroy]
-  get '/auth/:provider/callback', to: "sessions#create"
+  get '/auth/:provider/callback', to: "sessions#facebook"
 
 end

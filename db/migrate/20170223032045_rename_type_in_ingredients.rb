@@ -1,4 +1,4 @@
-class RenameIngredientTypeInIngredients < ActiveRecord::Migration[5.0]
+class RenameTypeInIngredients < ActiveRecord::Migration[5.0]
   def change
     rename_column :ingredients, :type, :ingredient_type
   end

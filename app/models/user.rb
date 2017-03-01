@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :recipes
 
-  has_secure_password on: :create
+  has_secure_password
 
   validates :name, presence: true, on: :create
   validates :name, presence: true, allow_blank: true, on: :update, :unless => Proc.new {|c| c.name.empty?}
@@ -14,13 +14,14 @@ class User < ApplicationRecord
   validates :password, :length => {:within => 6..40}, on: :create
   validates :password, :length => {:within => 6..40}, on: :update, :unless => Proc.new {|c| c.password.nil?}
 
-  def self.find_or_create_by_omniauth(omni_hash)
-    user = User.find_or_initialize_by(uid: omni_hash[:uid])
-    user.name = omni_hash[:info]['name']
-    user.email = omni_hash[:info]['email']
-    user.password = SecureRandom.hex
-    user.save
-    user
+  def self.find_or_create_by_omniauth(auth)
+    omni_email = auth["info"]["email"]
+    if @user = User.find_by(email: omni_email)
+      return @user
+    else
+      omni_name = auth["info"]["name"]
+      @user = User.new(email: omni_email, password: SecureRandom.hex, name: omni_name)
+    end
   end
 
   def admin

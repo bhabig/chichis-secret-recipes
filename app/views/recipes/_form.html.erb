@@ -33,7 +33,7 @@
         <%= i.label :name, "INGREDIENT NAME" %>
         <%= i.text_field :name, placeholder: "name" %></br>
         <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
-        <%= i.check_box :allergen_warning, {}, true, false %></br>
+        <%= i.check_box :allergen_warning %></br>
         <%= i.label :spice_level, "SPICE LEVEL" %>
         <%= i.select :spice_level, (0..10), include_blank: true %></br>
         <%= i.label :ingredient_type, "TYPE" %>
