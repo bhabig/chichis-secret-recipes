@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user && logged_in?
@@ -19,8 +20,12 @@ class RecipesController < ApplicationController
     else
       other_errors = Ingredient.attribute_checks(params)
       if other_errors.empty?
-        @recipe = Recipe.create(recipe_params)
-        redirect_to user_recipe_path(@recipe.user_id, @recipe)
+        @recipe = Recipe.new(recipe_params)
+        if @recipe.save
+          redirect_to user_recipe_path(@recipe.user_id, @recipe)
+        else
+          render :new
+        end
       else
         redirect_to new_user_recipe_path(current_user), alert: "#{other_errors.length} ingredient forms had 1 or more empty fields."
       end
@@ -28,7 +33,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
@@ -47,6 +51,10 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :allergen_warning, :cook_time, :category, :instructions, :user_id, ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level], ingredient_ids: [])
+  end
+
+  def set_recipe
+    @recipe = Recipe.find_by(id: params[:id])
   end
 
 end
