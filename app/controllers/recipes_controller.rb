@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def index
     if params[:user_id]
+      @user = User.find_by(params[:user_id])
       @recipes = current_user.recipes unless current_user.recipes.empty?
     else
       @recipes = Recipe.all

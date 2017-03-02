@@ -1,9 +1,9 @@
-<% if @user %>
-  <h2><strong><%= @user.name.upcase %>'S RECIPES:</strong></h2>
-<% else %>
-  <h2><strong>RECIPES:</strong></h2>
-<% end %>
 <% if @recipes && !recipes.empty? %>
+  <% if @user %>
+    <h2><strong><%= @user.name.upcase %>'S RECIPES:</strong></h2>
+  <% else %>
+    <h2><strong>RECIPES:</strong></h2>
+  <% end %>
   <% @recipes.each do |r| %>
   <ul>
     <li><h4><strong><%= r.name.upcase %></strong></h4><p><%= link_to "VIEW RECIPE", user_recipe_path(@user, r), id: "nav-link" %></p></li></br>
