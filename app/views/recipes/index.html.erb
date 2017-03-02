@@ -3,8 +3,12 @@
 <% else %>
   <h2><strong>RECIPES:</strong></h2>
 <% end %>
+<% if @recipes && !recipes.empty? %>
   <% @recipes.each do |r| %>
   <ul>
     <li><h4><strong><%= r.name.upcase %></strong></h4><p><%= link_to "VIEW RECIPE", user_recipe_path(@user, r), id: "nav-link" %></p></li></br>
   </ul>
+  <% end %>
+<% else %>
+  <h3>NO RECIPES JUST YET! CLICK <%= link_to "HERE", new_user_recipe_path(@user), id: "nav-link" %> TO CREATE ONE!</h3>
 <% end %>

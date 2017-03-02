@@ -2,6 +2,8 @@
   <% if session[:user_id] %>
     <%= link_to "SIGN OUT", session_path(session[:user_id]), method: "delete", id: "header-link"%>
     <%= link_to "PROFILE", user_path(session[:user_id]), id: "header-link" %>
+    <%= link_to "ALL RECIPES", recipes_path, id: "header-link" %>
+    <%= link_to "INGREDIENTS", ingredients_path, id: "header-link" %>
     <%= link_to "UPDATE ACCOUNT", edit_user_path(session[:user_id]), id: "header-link" %>
     <%= link_to "DELETE ACCOUNT", user_path(session[:user_id]), method: "delete", id: "header-link"%>
   <% end %>

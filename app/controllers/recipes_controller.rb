@@ -1,8 +1,10 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :current_user, only: [:index, :show]
+  before_action :logged_in?, only: [:index, :show]
 
   def index
-    if current_user && logged_in?
+    if params[:user_id]
       @recipes = current_user.recipes unless current_user.recipes.empty?
     else
       @recipes = Recipe.all
