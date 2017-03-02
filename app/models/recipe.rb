@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
       ingredient = Ingredient.find_or_create_by(hash.except("measurement"))
       self.save
       self.ingredients << ingredient unless self.ingredients.include?(ingredient)
-      RecipeIngredient.all.last.measurement = hash[:measurement]
+      RecipeIngredient.all.last.update(measurement: hash[:measurement])
     end
   end
 

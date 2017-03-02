@@ -1,13 +1,10 @@
 class RecipesController < ApplicationController
 
   def index
-    if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      @recipes = @user.recipes
-      redirect_to user_recipes_path(@user)
+    if current_user && logged_in?
+      @recipes = current_user.recipes unless current_user.recipes.empty?
     else
       @recipes = Recipe.all
-      redirect_to recipes_path
     end
   end
 
@@ -23,9 +20,9 @@ class RecipesController < ApplicationController
       other_errors = Ingredient.attribute_checks(params)
       if other_errors.empty?
         @recipe = Recipe.create(recipe_params)
-        binding.pry
+        redirect_to user_recipe_path(@recipe.user_id, @recipe)
       else
-        redirect_to new_user_recipe_path(current_user), alert: "#{other_errors.length} ingredient forms had 1 or more emnpty fields."
+        redirect_to new_user_recipe_path(current_user), alert: "#{other_errors.length} ingredient forms had 1 or more empty fields."
       end
     end
   end

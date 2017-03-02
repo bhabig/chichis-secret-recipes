@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if password? && matching_password?
+    if password? && matching_password? #turn into yield method
       @user = User.new(user_params)
       @user.standardize_name
       if @user.save
@@ -24,14 +24,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    if logged_in? && current_user
+    if logged_in? && current_user #turn into private method & use before_action
       render :show
     else
       redirect_to root_path, alert: "must be logged in to see this page"
     end
   end
 
-  def edit
+  def edit #turn into private method & use before_action
     if logged_in? && current_user
       render :edit
     else
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if logged_in? && current_user
+    if logged_in? && current_user #turn into private method & use before_action
       user = User.find_by(id: params[:id])
       if user && user == current_user
         session.clear

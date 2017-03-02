@@ -1,0 +1,10 @@
+
+<%= binding.pry %>
+<% if @user %>
+<h2><strong>RECIPES:</strong></h2>
+  <%= @recipes.each do |r| %>
+    <%= r.name.upcase %><br>
+  <% end %>
+<% else %>
+
+<% end %>
