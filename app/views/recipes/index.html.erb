@@ -1,10 +1,20 @@
-
-<%= binding.pry %>
 <% if @user %>
-<h2><strong>RECIPES:</strong></h2>
-  <%= @recipes.each do |r| %>
-    <%= r.name.upcase %><br>
-  <% end %>
+  <h2><strong><%= @user.name.upcase %>'S RECIPES:</strong></h2>
 <% else %>
-
+  <h2><strong>RECIPES:</strong></h2>
 <% end %>
+  <% @recipes.each do |r| %>
+    <h5><strong><%= r.name.upcase %></strong></h5>
+    <h5><strong>COOK TIME:</strong> <%= r.cook_time %> min.</h5>
+    <h5><strong>INGREDIENTS:</strong></h5><br>
+      <ul>
+        <% r.ingredients.each do |i| %>
+          <% @recin = RecipeIngredient.find_by(ingredient_id: i.id, recipe_id: r.id)%>
+        <li>
+          <p><strong><%= i.name.upcase %> - </strong><%= @recin.measurement %></p>
+        </li>
+        <% end %>
+      </ul>
+    <h5><strong>COOKING INSTRUCTIONS:</strong></h5>
+    <p><%= r.instructions %></p>
+  <% end %></br>
