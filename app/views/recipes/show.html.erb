@@ -1,0 +1,13 @@
+<h2><strong><%= @recipe.name.upcase %></strong></h2>
+<h5><strong>COOK TIME:</strong> <%= @recipe.cook_time %> min.</h5>
+<h5><strong>INGREDIENTS:</strong></h5><br>
+  <ul>
+    <% @recipe.ingredients.each do |i| %>
+      <% @recin = RecipeIngredient.find_by(ingredient_id: i.id, recipe_id: @recipe.id)%>
+    <li>
+      <p><strong><%= i.name.upcase %> - </strong><%= @recin.measurement %></p>
+    </li>
+    <% end %>
+  </ul>
+<h5><strong>COOKING INSTRUCTIONS:</strong></h5>
+<p><%= @recipe.instructions %></p>
