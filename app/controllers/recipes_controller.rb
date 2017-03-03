@@ -1,8 +1,5 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, only: [:index, :show]
-  before_action :logged_in?, only: [:index, :show]
-
   def index
     if params[:user_id]
       @user = User.find_by(params[:user_id])
@@ -13,7 +10,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = @user.recipes.build
+    @recipe = current_user.recipes.build
   end
 
   def create
@@ -42,6 +39,7 @@ class RecipesController < ApplicationController
   end
 
   def update
+    binding.pry
     name_errors = Ingredient.validation_checks(params)
     if !name_errors.empty?
       redirect_to edit_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."

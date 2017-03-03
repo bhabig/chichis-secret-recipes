@@ -24,9 +24,22 @@
   </br>
   </br>
 
-  <p><strong>SELECT EXISTING INGREDIENTS</strong></p><br>
+  <p><strong>SELECT EXISTING INGREDIENTS</strong></p>
 
-  <p><strong>CREATE INGREDIENTS TO USE IN THIS RECIPE:</strong></p><br>
+  <% if !@recipe.recipe_ingredients.empty? %>
+  <p><strong>EDIT ORIGINAL INGREDIENTS:</strong></p>
+    <% @recipe.recipe_ingredients.each do |recin| %>
+      <% ingredient = Ingredient.find_by(id: recin.ingredient_id) %>
+      <%= form_for recin do |rif| %>
+        <p><%= ingredient.name.upcase %>: <%= rif.check_box :ingredient_id, checked: @recipe.ingredients.include?(ingredient) %></p>
+        <%= rif.label "MEASUREMENT ADJUSTMENT:" %>
+        <%= rif.text_field :measurement %>
+      <% end %><br></br>
+    <% end %>
+  <% end %>
+
+
+  </br><p><strong>CREATE INGREDIENTS TO USE IN THIS RECIPE:</strong></p><br>
 
     <%= f.fields_for :ingredient_attributes do |ingredient| %>
       <%= ingredient.fields_for "1" do |i| %>
