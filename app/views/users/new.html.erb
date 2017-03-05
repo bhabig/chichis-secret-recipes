@@ -1,6 +1,8 @@
 <%= render 'layouts/title-header' %>
 <div class="not-signed-in-header">
-
+  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
   <h2>Sign Up Below:</h2>
   <%= render 'form' %>
   <h5 style="color:rgba(225, 225, 225, 0.95);">ALREADY A MEMBER?</h5>

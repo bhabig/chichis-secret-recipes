@@ -55,9 +55,9 @@ class UsersController < ApplicationController
     if logged_in? && current_user #turn into private method & use before_action
       user = User.find_by(id: params[:id])
       if user && user == current_user
-        session.clear
         user.destroy
         redirect_to root_path, alert: "account deleted succesfully"
+        session.clear
       end
     else
       redirect_to :back, alert: "must be logged in to delete an account"
