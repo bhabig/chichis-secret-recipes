@@ -36,6 +36,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @counter = 1
   end
 
   def update

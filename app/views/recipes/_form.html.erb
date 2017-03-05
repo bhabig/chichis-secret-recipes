@@ -24,17 +24,18 @@
   </br>
   </br>
 
-  <p><strong>SELECT EXISTING INGREDIENTS</strong></p>
-
   <% if !@recipe.recipe_ingredients.empty? %>
-  <p><strong>EDIT ORIGINAL INGREDIENTS:</strong></p>
-    <% @recipe.recipe_ingredients.each do |recin| %>
-      <% ingredient = Ingredient.find_by(id: recin.ingredient_id) %>
-      <%= form_for recin do |rif| %>
-        <p><%= ingredient.name.upcase %>: <%= rif.check_box :ingredient_id, checked: @recipe.ingredients.include?(ingredient) %></p>
-        <%= rif.label "MEASUREMENT ADJUSTMENT:" %>
-        <%= rif.text_field :measurement %>
-      <% end %><br></br>
+  <p><strong>SELECT OR EDIT INGREDIENTS:</strong></p>
+    <% Ingredient.all.each do |ingdt| %>
+      <%= f.fields_for :ingredients do |ff| %>
+        <% recipe_ingredient = RecipeIngredient.find_by(ingredient_id: ingdt.id, recipe_id: @recipe.id) %>
+        <%= ff.fields_for "#{@counter}" do |i| %>
+          <p><%= ingdt.name.upcase %>: <%= i.check_box :id, checked = "#{ingdt.id}", checked: @recipe.ingredients.include?(ingdt) %></p>
+          <%= i.label "MEASUREMENT:" %>
+          <%= i.text_field :measurement, value: recipe_ingredient && !recipe_ingredient.measurement.empty? ? recipe_ingredient.measurement : nil %>
+          <% @counter += 1 %>
+        <% end %><br></br>
+      <% end %>
     <% end %>
   <% end %>
 
