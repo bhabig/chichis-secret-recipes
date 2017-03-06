@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
 
   validates_presence_of :name, :cook_time, :instructions, :category
 
-  attr_reader :ingredient_attributes
+  attr_reader :ingredient_attributes, :ingredient_ids
 
   def ingredient_attributes=(t)
     t.delete_if{|n,h| h[:name].empty?}
@@ -15,6 +15,10 @@ class Recipe < ApplicationRecord
       self.ingredients << ingredient unless self.ingredients.include?(ingredient)
       RecipeIngredient.all.last.update(measurement: hash[:measurement])
     end
+  end
+
+  def ingredient_select=(params)
+    binding.pry
   end
 
   #method to make cook_time readable

@@ -1,0 +1,27 @@
+<%= form_for @ingredient do |f| %>
+  <% if @ingredient.errors.any? %>
+    <div class="signed-in" id="error_explanation">
+      <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+      <% @ingredient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %></br>
+
+  <%= f.label :name, "INGREDIENT NAME" %>
+  <%= f.text_field :name, placeholder: "name" %>
+  </br>
+  <%= f.label :allergen_warning, "ALLERGEN WARNING?" %>
+  <%= f.check_box :allergen_warning %>
+  </br>
+  <%= f.label :spice_level, "SPICE LEVEL" %>
+  <%= f.select :spice_level, (0..10), include_blank: true %>
+  </br>
+  <%= f.label :ingredient_type, "TYPE" %>
+  <%= f.select :ingredient_type, (1..3), include_blank: true %>
+  </br>
+  <%= f.submit id: "registration2" %>
+<% end %>

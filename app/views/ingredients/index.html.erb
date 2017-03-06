@@ -1,0 +1,9 @@
+<h2>INGREDIENTS</h2>
+<br>
+<% @ingredients.each do |i| %>
+<ul>
+  <li>
+    <strong><%= i.name.upcase %></strong> || <%= link_to "VIEW INGREDIENT", ingredient_path(i) %><br>
+  </li>
+</ul>
+<% end %>

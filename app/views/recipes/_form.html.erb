@@ -26,14 +26,14 @@
 
   <% if !@recipe.recipe_ingredients.empty? %>
   <p><strong>SELECT OR EDIT INGREDIENTS:</strong></p>
+  <%= f.fields_for :ingredient_select do |ff| %>
     <% Ingredient.all.each do |ingdt| %>
-      <%= f.fields_for :ingredient_names do |ff| %>
         <% recipe_ingredient = RecipeIngredient.find_by(ingredient_id: ingdt.id, recipe_id: @recipe.id) %>
         <%= ff.fields_for "#{ingdt.name}" do |i| %>
-          <p><%= ingdt.name.upcase %>: <%= i.check_box "#{ingdt.id}", checked: @recipe.ingredients.include?(ingdt) %></p>
+          <%= i.label "#{ingdt.name.upcase}" %>
+          <%= i.check_box :id, checked: @recipe.ingredients.include?(ingdt) %></p>
           <%= i.label "MEASUREMENT:" %>
           <%= i.text_field :measurement, value: recipe_ingredient && !recipe_ingredient.measurement.empty? ? recipe_ingredient.measurement : nil %>
-          <% @counter += 1 %>
         <% end %><br></br>
       <% end %>
     <% end %>

@@ -1,17 +1,28 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:edit, :update, :destroy]
-  
-  def new
+  before_action :set_ingredient, only: [:edit, :update, :destroy, :show]
+
+  def index
+    if Ingredient.all.empty?
+      redirect_to :back, alert: "sorry, no ingredients to see yet"
+    else
+      @ingredients = Ingredient.all
+    end
+  end
+
+  def new #admin only
     @ingredient = Ingredient.new
   end
 
-  def create
+  def create #admin only
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
       redirect_to ingredient_path(@ingredient)
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
@@ -41,7 +52,7 @@ class IngredientsController < ApplicationController
   end
 
   def set_ingredient
-    @ingredient ||= Ingredient.find_by(params[:id])
+    @ingredient = Ingredient.find_by(id: params[:id])
   end
 
 end
