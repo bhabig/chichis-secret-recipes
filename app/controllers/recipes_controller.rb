@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
       redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
       other_errors = Ingredient.attribute_checks(params)
-      if other_errors.empty?
+      if other_errors.empty? || other_errors.nil?
         @recipe = Recipe.new(recipe_params)
         if @recipe.save
           redirect_to user_recipe_path(@recipe.user_id, @recipe)
@@ -46,9 +46,8 @@ class RecipesController < ApplicationController
       redirect_to edit_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
       other_errors = Ingredient.attribute_checks(params)
-      if other_errors.empty?
-        binding.pry
-        @recipe.update(recipe_params)
+      if other_errors.empty? || other_errors.nil?
+        @recipe.update_recipe(recipe_params, params[:recipe][:ingredient_select])
         if @recipe.save
           redirect_to user_recipe_path(@recipe.user_id, @recipe)
         else
@@ -67,7 +66,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :allergen_warning, :cook_time, :category, :instructions, :user_id, ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level])
+    params.require(:recipe).permit(:name, :cook_time, :instructions, :user_id, ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level], ingredient_select: [:name, :measurement])
   end
 
   def set_recipe

@@ -5,9 +5,10 @@ class Recipe < ApplicationRecord
 
   validates_presence_of :name, :cook_time, :instructions, :category
 
-  attr_reader :ingredient_attributes, :ingredient_ids
+  attr_reader :ingredients_attributes
 
   def ingredient_attributes=(t)
+    binding.pry
     t.delete_if{|n,h| h[:name].empty?}
     t.each do |num, hash|
       ingredient = Ingredient.find_or_create_by(hash.except("measurement"))
@@ -17,7 +18,7 @@ class Recipe < ApplicationRecord
     end
   end
 
-  def ingredient_select=(params)
+  def ingredient_select(params)
     binding.pry
   end
 
