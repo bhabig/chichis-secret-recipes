@@ -21,7 +21,9 @@ class RecipesController < ApplicationController
     else
       other_errors = Ingredient.attribute_checks(params)
       if other_errors.empty? || other_errors.nil?
+        binding.pry
         @recipe = Recipe.new(recipe_params)
+        @recipe.ingredient_select(params[:recipe][:ingredient_select])
         if @recipe.save
           redirect_to user_recipe_path(@recipe.user_id, @recipe)
         else
@@ -47,7 +49,8 @@ class RecipesController < ApplicationController
     else
       other_errors = Ingredient.attribute_checks(params)
       if other_errors.empty? || other_errors.nil?
-        @recipe.update_recipe(recipe_params, params[:recipe][:ingredient_select])
+        @recipe.update_recipe(recipe_params)
+        @recipe.ingredient_select(params[:recipe][:ingredient_select])
         if @recipe.save
           redirect_to user_recipe_path(@recipe.user_id, @recipe)
         else
@@ -66,7 +69,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :cook_time, :instructions, :user_id, ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level], ingredient_select: [:name, :measurement])
+    params.require(:recipe).permit(:name, :cook_time, :category, :instructions, :user_id, ingredient_select: [], ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level])
   end
 
   def set_recipe
