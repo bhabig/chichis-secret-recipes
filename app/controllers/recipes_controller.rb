@@ -64,7 +64,15 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-
+    if logged_in? && current_user
+      if @recipe.destroy
+        redirect_to user_recipes_path(params[:user_id])
+      else
+        redirect_to user_recipe_path(params[:user_id], @recipe)
+      end
+    else
+      redirect_to root_path, alert: "must be signed in and owner of this ingredient"
+    end
   end
 
   private

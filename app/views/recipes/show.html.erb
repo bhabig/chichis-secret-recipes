@@ -12,4 +12,4 @@
   </ul>
 <h5><strong>COOKING INSTRUCTIONS:</strong></h5>
 <p><%= @recipe.instructions %></p></br>
-<%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), id: "nav-link" %>
+<%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), id: "nav-link" %> || <%= link_to "DELETE", user_recipe_path(@user, @recipe), method: "delete", id: "nav-link" %>
