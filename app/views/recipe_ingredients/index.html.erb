@@ -1,0 +1,12 @@
+<h2>HERE IS THE FULL LIST OF RECIPES THAT INCLUDE <%= @ingredient.name.upcase %>:</h2>
+<% if @recipes && !@recipes.empty? %>
+  <% @recipes.each do |r| %>
+    <ul>
+      <li>
+        <%= link_to "#{r.name}", recipe_path(r), id: "nav-link" %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>THIS INGREDIENT ISN'T CURRENTLY BEING USED IN ANY RECIPES! <%= link_to "CREATE ONE HERE", new_user_recipe_path(@user), id: "nav-link" %></p>
+<% end %>

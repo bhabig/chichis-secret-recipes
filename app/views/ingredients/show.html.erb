@@ -3,3 +3,4 @@
 <p><strong>ALLERGEN WARNING?:</strong> <%= @ingredient.allergen_warning %></p>
 <p><strong>SPICE LEVEL:</strong> <%= @ingredient.spice_level %></p>
 <p><strong>TYPE:</strong> <%= @ingredient.ingredient_type %></p>
+<%= link_to "VIEW RECIPES", {controller: 'recipe_ingredients', action: 'index', ingredient_id: @ingredient.id}, id: "nav-link" %>
