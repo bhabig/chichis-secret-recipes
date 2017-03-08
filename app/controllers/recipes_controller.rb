@@ -20,8 +20,7 @@ class RecipesController < ApplicationController
       redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
       other_errors = Ingredient.attribute_checks(params)
-      if other_errors.empty? || other_errors.nil?
-        binding.pry
+      if !other_errors || other_errors.empty?
         @recipe = Recipe.new(recipe_params)
         @recipe.ingredient_select(params[:recipe][:ingredient_select])
         if @recipe.save
@@ -48,10 +47,12 @@ class RecipesController < ApplicationController
       redirect_to edit_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
       other_errors = Ingredient.attribute_checks(params)
-      if other_errors.empty? || other_errors.nil?
-        @recipe.update_recipe(recipe_params)
-        @recipe.ingredient_select(params[:recipe][:ingredient_select])
-        if @recipe.save
+      if !other_errors || other_errors.empty?
+        @recipe.update(recipe_params)
+        message = @recipe.ingredient_select(params[:recipe][:ingredient_select])
+        if message.class == String
+          redirect_to edit_user_recipe_path(@recipe), alert: "#{message}"
+        elsif @recipe.save
           redirect_to user_recipe_path(@recipe.user_id, @recipe)
         else
           render :edit
