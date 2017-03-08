@@ -28,6 +28,10 @@ class User < ApplicationRecord
     self.admin = true
   end
 
+  def admin?
+    self.admin == true
+  end
+
   def standardize_name
     pieces = self.name.split(" ")
     caps = pieces.map{|w| w.capitalize}
