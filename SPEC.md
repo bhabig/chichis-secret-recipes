@@ -8,19 +8,24 @@ Specs:
  [x] Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients) - recipe has many ingredients through recipe_ingredients
  [x] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity) - recipe_ingredients has a 'measurement' property i.e. recipe_ingredient.measurement = "1 lb"
  [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item) - every model has validations
- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) RecipeIngredient.recipes_for_ingredient(ing_id) - /recipe_ingredients?ingredient_id=1
+ [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) RecipeIngredient.recipes_for_ingredient(ing_id) - 'ingredients/4/recipes'
  [] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
- [x] Include signup (how e.g. Devise)
- [] Include login (how e.g. Devise)
- [] Include logout (how e.g. Devise)
- [] Include third party signup/login (how e.g. Devise/OmniAuth)
- [] Include nested resource show or index (URL e.g. users/2/recipes)
- [] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
- [] Include form display of validation errors (form URL e.g. /recipes/new)
+    -form url: http://localhost:3000/users/1/recipes/new
+    -model name: form for recipe includes nested ingredient forms via fields_for. writes to `ingredient_attributes=` setter in Recipe.rb which creates and/or associates
+    -**to make things work smoothly, 2 Ingredient.rb methods are used to ensure valid input prior to hitting `ingredient_attributes=`
+ [x] Include signup (how e.g. Devise) custom
+ [x] Include login (how e.g. Devise) custom
+ [x] Include logout (how e.g. Devise) custom
+ [x] Include third party signup/login (how e.g. Devise/OmniAuth) omniauth-facebook
+ [x] Include nested resource show or index (URL e.g. users/2/recipes) several
+    - /users/1/recipes/1 for an example
+ [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+    - /users/1/recipes/new
+ [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 
  [] The application is pretty DRY
  [] Limited logic in controllers
  [] Views use helper methods if appropriate
- [] Views use partials if appropriate
+ [x] Views use partials if appropriate
