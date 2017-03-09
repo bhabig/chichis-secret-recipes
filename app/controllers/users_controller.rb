@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def new
-    if current_user || admin?
+    if current_user
       redirect_to user_path(@user), alert: "you are already signed in. you must sign out before creating a new account."
     else
       @user = User.new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       @user.standardize_name
       if @user.save
-        session[:user_id].to_i = @user.id
+        session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
         render :new
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    binding.pry
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)#turn into private method & use before_action
       render :show
     elsif current_user.id != params[:id].to_i && !current_user.admin?
