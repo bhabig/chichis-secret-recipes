@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def create
+  def create #refactor
     if password? && matching_password? #turn into yield method
       @user = User.new(user_params)
       @user.standardize_name
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def show #yield + refactor
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)#turn into private method & use before_action
       render :show
     elsif current_user.id != params[:id].to_i && !current_user.admin?
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit #turn into private method & use before_action
+  def edit #yield + refactor
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
       render :edit
     elsif current_user.id != params[:id].to_i && !current_user.admin?
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy #yield + refactor
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
       user = User.find_by(id: params[:id].to_i)
       if user && user == current_user

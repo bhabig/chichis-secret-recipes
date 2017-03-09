@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def facebook
+  def facebook #refactor
     if auth
       @user = User.find_or_create_by_omniauth(auth)
       if @user.save

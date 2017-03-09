@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:edit, :update, :destroy, :show]
 
-  def index
+  def index #yield? #refactor
     if logged_in? && current_user #can place everything between this line and else line in a yield
       if Ingredient.all.empty?
         redirect_to :back, alert: "sorry, no ingredients to see yet"
@@ -13,7 +13,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def new #admin only
+  def new #admin only #yield?
     if current_user && current_user.admin?
       @ingredient = Ingredient.new
     else
@@ -21,7 +21,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def create #admin only
+  def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
       redirect_to ingredient_path(@ingredient)
@@ -30,7 +30,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def show
+  def show #yield?
     if logged_in? && current_user
       render :show
     else
@@ -38,7 +38,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def edit
+  def edit #yield?
     if logged_in? && current_user && current_user.admin? #yield
       render :edit
     else
@@ -54,7 +54,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy #yield?
     if @ingredient && current_user && current_user.admin?
       @ingredient.destroy
       redirect_to :back

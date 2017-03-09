@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    if logged_in? && current_user
+    if logged_in? && current_user #refactor
       if params[:user_id] && (params[:user_id].to_i == current_user.id || current_user.admin?)
         @user = User.find_by(id: params[:user_id])
         @recipes = current_user.recipes unless current_user.recipes.empty?
@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def new
+  def new #yield?
     if logged_in? && current_user && (current_user.id == params[:user_id].to_i || current_user.admin?)
       @recipe = current_user.recipes.build
     elsif current_user.id != params[:user_id].to_i && !current_user.admin?
@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def create
+  def create #can and must be refactored but wait until assessment - revamp bc of cocoon or other strategy?
     name_errors = Ingredient.validation_checks(params)
     if !name_errors.empty?
       redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def show
+  def show #yield?
     if logged_in? && current_user
       render :show
     else
@@ -54,7 +54,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def edit
+  def edit #yield?
     if logged_in? && current_user && (current_user.id == @recipe.user_id || current_user.admin?)
       render :edit
     elsif current_user.id != @recipe.user_id && !current_user.admin?
@@ -64,7 +64,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def update
+  def update  #can and must be refactored but wait until assessment - revamp bc of cocoon or other strategy?
     name_errors = Ingredient.validation_checks(params)
     if !name_errors.empty?
       redirect_to edit_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
@@ -86,7 +86,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy #refactor
     if logged_in? && current_user && (current_user.id == @recipe.user_id || current_user.admin?)
       if @recipe.destroy
         redirect_to user_recipes_path(params[:user_id])
