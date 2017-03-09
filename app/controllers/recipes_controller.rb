@@ -2,16 +2,24 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:user_id]
+    if logged_in? && current_user
+      if params[:user_id] && (params[:user_id] == current_user.id || current_user.admin?)
       @user = User.find_by(params[:user_id])
       @recipes = current_user.recipes unless current_user.recipes.empty?
+      else
+        @recipes = Recipe.all
+      end
     else
-      @recipes = Recipe.all
+      redirect_to :back, alert: "must be signed in"
     end
   end
 
   def new
-    @recipe = current_user.recipes.build
+    if logged_in? && current_user && (current_user.id == params[:user_id] || current_user.admin?)
+      @recipe = current_user.recipes.build
+    else
+      redirect_to :back, alert: "can't perform this action. try signing in and make sure you're on your own profile"
+    end
   end
 
   def create
@@ -35,10 +43,19 @@ class RecipesController < ApplicationController
   end
 
   def show
+    if logged_in? && current_user
+      render :show
+    else
+      redirect_to :back, alert: "must be logged in"
+    end
   end
 
   def edit
-    @counter = 1
+    if logged_in? && current_user && (current_user.id == @recipe.user_id || current_user.admin?)
+      render :edit
+    else
+      redirect_to :back, alert: "must be logged in and the recipe must belong to you"
+    end
   end
 
   def update
@@ -64,14 +81,14 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    if logged_in? && current_user
+    if logged_in? && current_user && (current_user.id == @recipe.user_id || current_user.admin?)
       if @recipe.destroy
         redirect_to user_recipes_path(params[:user_id])
       else
         redirect_to user_recipe_path(params[:user_id], @recipe)
       end
     else
-      redirect_to root_path, alert: "must be signed in and owner of this ingredient"
+      redirect_to root_path, alert: "must be signed in and owner of this recipe"
     end
   end
 

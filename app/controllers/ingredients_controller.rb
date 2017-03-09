@@ -2,30 +2,52 @@ class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:edit, :update, :destroy, :show]
 
   def index
-    if Ingredient.all.empty?
-      redirect_to :back, alert: "sorry, no ingredients to see yet"
+    if logged_in? && current_user #can place everything between this line and else line in a yield
+      if Ingredient.all.empty?
+        redirect_to :back, alert: "sorry, no ingredients to see yet"
+      else
+        @ingredients = Ingredient.all
+      end
     else
-      @ingredients = Ingredient.all
+      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
     end
   end
 
   def new #admin only
-    @ingredient = Ingredient.new
+    if current_user.admin?
+      @ingredient = Ingredient.new
+    else
+      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
+    end
   end
 
   def create #admin only
-    @ingredient = Ingredient.new(ingredient_params)
-    if @ingredient.save
-      redirect_to ingredient_path(@ingredient)
+    if logged_in? && current_user && current_user.admin? #yield method
+      @ingredient = Ingredient.new(ingredient_params)
+      if @ingredient.save
+        redirect_to ingredient_path(@ingredient)
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
     end
   end
 
   def show
+    if logged_in? && current_user
+      render :show
+    else
+      redirect_to :back, alert: "must be logged in"
+    end
   end
 
   def edit
+    if logged_in? && current_user && current_user.admin? #yield
+      render :edit
+    else
+      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
+    end
   end
 
   def update
@@ -37,7 +59,7 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    if @ingredient
+    if @ingredient && current_user && current_user.admin?
       @ingredient.destroy
       redirect_to :back
     else
