@@ -17,6 +17,8 @@ class RecipesController < ApplicationController
   def new
     if logged_in? && current_user && (current_user.id == params[:user_id].to_i || current_user.admin?)
       @recipe = current_user.recipes.build
+    elsif current_user.id != params[:user_id].to_i && !current_user.admin?
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
       redirect_to :back, alert: "can't perform this action. try signing in and make sure you're on your own profile"
     end
@@ -53,6 +55,8 @@ class RecipesController < ApplicationController
   def edit
     if logged_in? && current_user && (current_user.id == @recipe.user_id || current_user.admin?)
       render :edit
+    elsif current_user.id != @recipe.user_id && !current_user.admin?
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
       redirect_to :back, alert: "must be logged in and the recipe must belong to you"
     end
@@ -87,6 +91,8 @@ class RecipesController < ApplicationController
       else
         redirect_to user_recipe_path(params[:user_id], @recipe)
       end
+    elsif current_user.id != @recipe.user_id
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
       redirect_to root_path, alert: "must be signed in and owner of this recipe"
     end

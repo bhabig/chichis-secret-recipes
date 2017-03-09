@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)#turn into private method & use before_action
       render :show
     elsif current_user.id != params[:id].to_i && !current_user.admin?
-      session.clear
-      redirect_to root_path, alert: "not authorized. please sign back in to your own account"
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
       redirect_to root_path, alert: "must be logged in to see this page"
     end
@@ -37,6 +36,8 @@ class UsersController < ApplicationController
   def edit #turn into private method & use before_action
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
       render :edit
+    elsif current_user.id != params[:id].to_i && !current_user.admin?
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
       redirect_to root_path, alert: "must be logged in to see this page"
     end
@@ -62,8 +63,10 @@ class UsersController < ApplicationController
         redirect_to root_path, alert: "account deleted succesfully"
         session.clear
       end
+    elsif current_user.id != params[:id].to_i && !current_user.admin?
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
-      redirect_to :back, alert: "must be logged in to delete an account"
+      redirect_to :back, notice: "must be logged in to delete an account"
     end
   end
 

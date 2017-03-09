@@ -22,15 +22,11 @@ class IngredientsController < ApplicationController
   end
 
   def create #admin only
-    if logged_in? && current_user && current_user.admin? #yield method
-      @ingredient = Ingredient.new(ingredient_params)
-      if @ingredient.save
-        redirect_to ingredient_path(@ingredient)
-      else
-        render :new
-      end
+    @ingredient = Ingredient.new(ingredient_params)
+    if @ingredient.save
+      redirect_to ingredient_path(@ingredient)
     else
-      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
+      render :new
     end
   end
 
