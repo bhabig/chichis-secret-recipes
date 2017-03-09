@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.where("lower(name) = ?", params[:user][:name].downcase).first
+    set_user(params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -41,6 +41,12 @@ class SessionsController < ApplicationController
 
   def auth
    request.env['omniauth.auth']
+  end
+
+  private
+
+  def set_user(params)
+    @user = User.where("lower(name) = ?", params.downcase).first
   end
 
 end
