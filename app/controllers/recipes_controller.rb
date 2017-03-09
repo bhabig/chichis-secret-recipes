@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     if logged_in? && current_user
-      if params[:user_id] && (params[:user_id] == current_user.id || current_user.admin?)
+      if params[:user_id] && (params[:user_id].to_i == current_user.id || current_user.admin?)
       @user = User.find_by(params[:user_id])
       @recipes = current_user.recipes unless current_user.recipes.empty?
       else
@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    if logged_in? && current_user && (current_user.id == params[:user_id] || current_user.admin?)
+    if logged_in? && current_user && (current_user.id == params[:user_id].to_i || current_user.admin?)
       @recipe = current_user.recipes.build
     else
       redirect_to :back, alert: "can't perform this action. try signing in and make sure you're on your own profile"
@@ -99,7 +99,7 @@ class RecipesController < ApplicationController
   end
 
   def set_recipe
-    @recipe = Recipe.find_by(id: params[:id])
+    @recipe = Recipe.find_by(id: params[:id].to_i)
   end
 
 end

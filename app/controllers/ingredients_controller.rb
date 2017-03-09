@@ -14,7 +14,7 @@ class IngredientsController < ApplicationController
   end
 
   def new #admin only
-    if current_user.admin?
+    if current_user && current_user.admin?
       @ingredient = Ingredient.new
     else
       redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method

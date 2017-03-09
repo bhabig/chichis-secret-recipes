@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       @user.standardize_name
       if @user.save
-        session[:user_id] = @user.id
+        session[:user_id].to_i = @user.id
         redirect_to user_path(@user)
       else
         render :new
@@ -24,15 +24,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    if logged_in? && current_user && (current_user.id == params[:id] || current_user.admin?)#turn into private method & use before_action
+    binding.pry
+    if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)#turn into private method & use before_action
       render :show
+    elsif current_user.id != params[:id].to_i && !current_user.admin?
+      session.clear
+      redirect_to root_path, alert: "not authorized. please sign back in to your own account"
     else
       redirect_to root_path, alert: "must be logged in to see this page"
     end
   end
 
   def edit #turn into private method & use before_action
-    if logged_in? && current_user && (current_user.id == params[:id] || current_user.admin?)
+    if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
       render :edit
     else
       redirect_to root_path, alert: "must be logged in to see this page"
@@ -52,8 +56,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if logged_in? && current_user && (current_user.id == params[:id] || current_user.admin?)
-      user = User.find_by(id: params[:id])
+    if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
+      user = User.find_by(id: params[:id].to_i)
       if user && user == current_user
         user.destroy
         redirect_to root_path, alert: "account deleted succesfully"
