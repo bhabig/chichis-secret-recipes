@@ -2,11 +2,12 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
+    binding.pry
     if logged_in? && current_user
       if params[:user_id] && (params[:user_id].to_i == current_user.id || current_user.admin?)
         @user = User.find_by(id: params[:user_id])
         @recipes = current_user.recipes unless current_user.recipes.empty?
-      elsif params[:user_id].to_i != current_user.id && current_user.admin?
+      elsif params[:user_id].to_i != current_user.id && !current_user.admin?
         redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       else
         @recipes = Recipe.all
