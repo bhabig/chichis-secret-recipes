@@ -1,15 +1,13 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:edit, :update, :destroy, :show]
 
-  def index #yield? #refactor
-    if logged_in? && current_user #can place everything between this line and else line in a yield
+  def index
+    logged_in_yield do
       if Ingredient.all.empty?
         redirect_to :back, alert: "sorry, no ingredients to see yet"
       else
         @ingredients = Ingredient.all
       end
-    else
-      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
     end
   end
 
@@ -31,10 +29,8 @@ class IngredientsController < ApplicationController
   end
 
   def show #yield?
-    if logged_in? && current_user
+    logged_in_yield do
       render :show
-    else
-      redirect_to :back, alert: "must be logged in"
     end
   end
 
@@ -73,6 +69,5 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find_by(id: params[:id])
   end
 
-
-
+  #do you need strong params if ingredients are created in the Recipe model from the recipe controller?
 end

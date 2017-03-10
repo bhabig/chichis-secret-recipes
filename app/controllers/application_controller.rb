@@ -25,4 +25,22 @@ class ApplicationController < ActionController::Base
     !params[:user][:password].nil? && !params[:user][:password_confirmation].nil?
   end
 
+  def user_authorization_check_yield
+    if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
+      yield
+    elsif current_user.id != params[:id].to_i && !current_user.admin?
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    else
+      redirect_to root_path, alert: "must be logged in"
+    end
+  end
+
+  def logged_in_yield
+    if logged_in? && current_user
+      yield
+    else
+      redirect_to :back, alert: "must be logged in" #can encapsulate this alert message in a method
+    end
+  end
+
 end
