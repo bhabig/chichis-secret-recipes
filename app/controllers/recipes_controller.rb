@@ -86,6 +86,7 @@ class RecipesController < ApplicationController
 
   def recipe_create_update_yield
     name_errors = Ingredient.validation_checks(params)
+    binding.pry
     if !name_errors.empty?
       redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
