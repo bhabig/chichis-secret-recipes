@@ -12,10 +12,8 @@ class IngredientsController < ApplicationController
   end
 
   def new #admin only #yield?
-    if current_user && current_user.admin?
+    permission_yield do
       @ingredient = Ingredient.new
-    else
-      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
     end
   end
 
@@ -28,17 +26,15 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def show #yield?
+  def show
     logged_in_yield do
       render :show
     end
   end
 
   def edit #yield?
-    if logged_in? && current_user && current_user.admin? #yield
+    permission_yield do
       render :edit
-    else
-      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
     end
   end
 
@@ -51,11 +47,12 @@ class IngredientsController < ApplicationController
   end
 
   def destroy #yield?
-    if @ingredient && current_user && current_user.admin?
+    binding.pry
+    if @ingredient && current_user_and_admin
       @ingredient.destroy
       redirect_to :back
     else
-      redirect_to :back, alert: "ingredient couldn't be found"
+      redirect_to :back, alert: "ingredient couldn't be found or it doesn't belong to you"
     end
   end
 
@@ -67,6 +64,22 @@ class IngredientsController < ApplicationController
 
   def set_ingredient
     @ingredient = Ingredient.find_by(id: params[:id])
+  end
+
+  def logged_and_current
+    logged_in? && current_user
+  end
+
+  def current_user_and_admin
+    logged_and_current && current_user.admin?
+  end
+
+  def permission_yield
+    if logged_and_current && current_user_and_admin || current_user_and_admin || logged_and_current
+      yield
+    else
+      redirect_to :back, alert: "not authorized to perform this action" #can encapsulate this alert message in a method
+    end
   end
 
   #do you need strong params if ingredients are created in the Recipe model from the recipe controller?
