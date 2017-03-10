@@ -35,6 +35,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorization_for_recipe_and_ingredient_yield
+    if params[:user_id] && (params[:user_id].to_i == current_user.id || current_user.admin?)
+      yield
+    elsif params[:user_id] && params[:user_id].to_i != current_user.id && !current_user.admin?
+      redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    else
+      @recipes = Recipe.all
+    end
+  end
+
   def logged_in_yield
     if logged_in? && current_user
       yield

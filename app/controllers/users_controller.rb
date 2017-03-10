@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  def new
-    if logged_in? && current_user #maybe make a yield in ApplicationController
+  def new #conditions reversed. no yield
+    if logged_in? && current_user
       redirect_to user_path(@user), alert: "you are already signed in. you must sign out before creating a new account."
     else
       @user = User.new
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show #yield + refactor
-    user_authorization_check_yield#turn into private method & use before_action
+    user_authorization_check_yield do#turn into private method & use before_action
       render :show
     end
   end
