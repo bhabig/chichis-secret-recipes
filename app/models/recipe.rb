@@ -2,7 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
-
+  has_attached_file :recipe_avatar, default_url: ':style/recipe_default.png'
+  validates_attachment_content_type :recipe_avatar, content_type: /\Aimage\/.*\z/
   validates_presence_of :name, :cook_time, :instructions, :category
 
   attr_reader :ingredients_attributes

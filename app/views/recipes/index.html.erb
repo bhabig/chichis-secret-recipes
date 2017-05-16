@@ -6,7 +6,11 @@
   <% end %>
   <% @recipes.each do |r| %>
   <ul>
-    <li><h4><strong><%= r.name.upcase %></strong></h4><p><%= link_to "VIEW RECIPE", user_recipe_path(@user, r), id: "nav-link" %></p></li></br>
+    <li>
+      <h4><strong><%= r.name.upcase %></strong></h4>
+      <p><%= image_tag r.recipe_avatar.url, class: "thumb" %></p>
+      <p><%= link_to "VIEW RECIPE", user_recipe_path(@user, r), id: "nav-link" %></p>
+    </li></br>
   </ul>
   <% end %>
 <% else %>

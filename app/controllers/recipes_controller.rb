@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
   def create #can and must be refactored but wait until assessment - revamp bc of cocoon or other strategy?
     recipe_create_update_yield do
       @recipe = Recipe.new(recipe_params)
-      @recipe.ingredient_select(params[:recipe][:ingredient_select])
+      @recipe.ingredient_select(params[:recipe][:ingredient_select]) unless !(params[:recipe][:ingredient_select])
       if @recipe.save
         redirect_to user_recipe_path(@recipe.user_id, @recipe)
       else
@@ -67,7 +67,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :cook_time, :category, :instructions, :user_id, ingredient_select: [], ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level])
+    params.require(:recipe).permit(:name, :recipe_avatar, :cook_time, :category, :instructions, :user_id, ingredient_select: [], ingredient_attributes: [:name, :allergen_warning, :ingredient_type, :measurement, :spice_level])
   end
 
   def set_recipe
@@ -86,7 +86,6 @@ class RecipesController < ApplicationController
 
   def recipe_create_update_yield
     name_errors = Ingredient.validation_checks(params)
-    binding.pry
     if !name_errors.empty?
       redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else

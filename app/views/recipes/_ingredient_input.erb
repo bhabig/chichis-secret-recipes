@@ -1,0 +1,187 @@
+<script>
+  var counter = 1;
+
+  function onClick() {
+    $('#click').click(function(e) {
+      $(`#field_${counter}`).removeClass("hidden");
+      e.preventDefault();
+    });
+    counter++;
+  }
+  $(document).ready(onClick)
+</script>
+
+</br><p><strong>CREATE INGREDIENTS TO USE IN THIS RECIPE:</strong></p><br>
+
+<div id="field_1" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "1" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_2" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "2" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_3" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "3" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_4" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "4" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_5" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "5" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_6" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "6" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_7" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "7" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_8" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "8" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_9" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "9" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %></br>
+</div>
+
+<div id="field_10" class="hidden">
+  <%= f.fields_for :ingredient_attributes do |ingredient| %>
+    <%= ingredient.fields_for "10" do |i| %>
+      <%= i.label :name, "INGREDIENT NAME" %>
+      <%= i.text_field :name, placeholder: "name" %></br>
+      <%= i.label :allergen_warning, "ALLERGEN WARNING?" %>
+      <%= i.check_box :allergen_warning %></br>
+      <%= i.label :spice_level, "SPICE LEVEL" %>
+      <%= i.select :spice_level, (0..10), include_blank: true %></br>
+      <%= i.label :ingredient_type, "TYPE" %>
+      <%= i.select :ingredient_type, (1..3), include_blank: true %></br>
+      <%= i.label :measurement, "MEASUREMENT" %>
+      <%= i.text_field :measurement, placeholder: "measurement" %></br>
+    <% end %>
+  <% end %>
+</div>
+
+
+<p id="nav-link"><a href="#" id="click" onclick="onClick();" style="color: rgba(225, 225, 225, 0.95)">add ingredient</a></p>

@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, html: {multipart: true} do |f| %>
 
   <% if @user.errors.any? %>
     <div class="signed-in" id="error_explanation">
@@ -12,6 +12,9 @@
     </div>
   <% end %></br>
 
+  <%= f.label "AVATAR:" %>
+  <%= f.file_field :user_avatar %>
+  <br>
   <%= f.label "USERNAME:" %>
   <%= f.text_field :name %>
   </br>

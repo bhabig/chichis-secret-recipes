@@ -1,3 +1,4 @@
 <h2>YOU MADE IT, <%= @user.name.upcase %>!</h2>
+<%= image_tag @user.user_avatar.url, class: "profile" %><br></br>
 <%= link_to "YOUR RECIPES", user_recipes_path(@user), id: "nav-link" %>
 <%= link_to "ADD RECIPE", new_user_recipe_path(@user), id: "nav-link" %>

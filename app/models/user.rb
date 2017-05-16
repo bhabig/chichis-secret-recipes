@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :recipes
-
+  has_attached_file :user_avatar, default_url: ':style/user_default.png'
+  validates_attachment_content_type :user_avatar, content_type: /\Aimage\/.*\z/
   has_secure_password
 
   validates :name, presence: true, on: :create

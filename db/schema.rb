@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224192306) do
+ActiveRecord::Schema.define(version: 20170515212728) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -35,19 +35,27 @@ ActiveRecord::Schema.define(version: 20170224192306) do
     t.string   "name"
     t.integer  "cook_time"
     t.text     "instructions"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "category"
+    t.string   "recipe_avatar_file_name"
+    t.string   "recipe_avatar_content_type"
+    t.integer  "recipe_avatar_file_size"
+    t.datetime "recipe_avatar_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.string   "email"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "admin",                    default: false
     t.integer  "uid"
+    t.string   "user_avatar_file_name"
+    t.string   "user_avatar_content_type"
+    t.integer  "user_avatar_file_size"
+    t.datetime "user_avatar_updated_at"
   end
 
 end
