@@ -2,6 +2,9 @@ class Ingredient < ApplicationRecord
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
 
+  has_attached_file :image_avatar, default_url: ''
+  validates_attachment_content_type :image_avatar, content_type: /\Aimage\/.*\z/
+
   validates_presence_of :name, :spice_level, :ingredient_type
   validates_uniqueness_of :name
 

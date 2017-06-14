@@ -1,0 +1,12 @@
+<% if session[:user_id] %>
+  <div class="signed-in-header"><%= render 'layouts/header-links' %></div>
+  <div class="signed-in">
+    <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+    <%= content_tag(:div, flash[:notice], class: "signed-in", :id => "flash_notice") if flash[:notice] %>
+    <%= content_tag(:div, flash[:alert], class: "signed-in", id: "flash_alert") if flash[:alert] %>
+    <%= yield %>
+  </div>
+</div>
+<% else %>
+  <%= yield %>
+<% end %>
