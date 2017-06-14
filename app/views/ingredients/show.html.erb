@@ -4,7 +4,7 @@
 <p><strong>SPICE LEVEL:</strong> <%= @ingredient.spice_level %></p>
 <p><strong>TYPE:</strong> <%= @ingredient.ingredient_type %></p>
 <%= link_to "VIEW RECIPES", {controller: 'recipe_ingredients', action: 'index', ingredient_id: @ingredient.id}, id: "nav-link" %>
-<!-- <%= valid_user? @user %> helper? -->
+<!-- <#%= valid_user? @user %> helper? -->
 <% if @user && @user.admin? %>
   <!-- below pipes for style, not 'or' -->
    || <%= link_to "DELETE", ingredient_path(@ingredient), method: "delete", id: "nav-link" %>
