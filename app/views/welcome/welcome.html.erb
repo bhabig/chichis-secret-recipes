@@ -1,5 +1,8 @@
 <%= render 'layouts/title-header' %>
 <div class="not-signed-in-header">
+  <% if flash[:alert] %>
+    <div id="flash_alert"><%= flash[:alert] %></div>
+  <% end %>
 
   <%= link_to "SIGN IN", new_session_path, id: "registration1" %>
    <%= link_to "SIGN UP", new_user_path, id: "registration2" %>

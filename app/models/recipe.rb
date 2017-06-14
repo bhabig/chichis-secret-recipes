@@ -36,5 +36,7 @@ class Recipe < ApplicationRecord
     self.ingredients.delete(ingredient)
   end
 
-  #method to make cook_time readable
+  def cook_time(recipe)
+    binding.pry
+  end
 end

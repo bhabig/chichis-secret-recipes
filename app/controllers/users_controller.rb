@@ -48,8 +48,9 @@ class UsersController < ApplicationController
       user = User.find_by(id: params[:id].to_i)
       if user && user == current_user
         user.destroy
-        redirect_to root_path, alert: "account deleted succesfully"
-        session.clear
+        session.destroy
+        flash[:alert] = "account deleted succesfully"
+        redirect_to root_path
       end
     end
   end

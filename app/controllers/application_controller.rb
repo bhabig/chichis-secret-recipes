@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def user_authorization_check_yield
     if logged_in? && current_user && (current_user.id == params[:id].to_i || current_user.admin?)
       yield
-    elsif current_user.id != params[:id].to_i && !current_user.admin?
+    elsif !current_user || current_user.id != params[:id].to_i && !current_user.admin?
       redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
       redirect_to root_path, alert: "must be logged in"

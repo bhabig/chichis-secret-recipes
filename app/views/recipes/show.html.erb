@@ -1,6 +1,6 @@
 <h2><strong><%= @recipe.name.upcase %></strong></h2>
 <%= image_tag @recipe.recipe_avatar.url, class: "profile" %></br>
-<h5><strong>COOK TIME:</strong> <%= @recipe.cook_time %> min.</h5>
+<h5><strong>COOK TIME:</strong> <%= binding.pry %> min.</h5>
 <h5><strong>INGREDIENTS:</strong></h5><br>
   <ul>
     <% @recipe.ingredients.each do |i| %>
