@@ -8,6 +8,12 @@ class Recipe < ApplicationRecord
 
   attr_reader :ingredients_attributes
 
+  @@categories = ["Breakfast", "Lunch", "Dinner", "Snack"]
+
+  def self.categories
+    @@categories
+  end
+
   def ingredient_attributes=(t)
     t.delete_if{|n,h| h[:name].empty?}
     t.each do |num, hash|
@@ -36,7 +42,7 @@ class Recipe < ApplicationRecord
     self.ingredients.delete(ingredient)
   end
 
-  def cook_time(recipe)
+  def recipe_cook_time(recipe)
     binding.pry
   end
 end

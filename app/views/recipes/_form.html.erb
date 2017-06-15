@@ -23,7 +23,7 @@
   <%= f.number_field :cook_time, min: 1, placeholder: "MINUTES"%>
   </br>
   <%= f.label :category, "CATEGORY" %>
-  <%= f.select :category, (1..4) %>
+  <%= f.select :category, Recipe.categories.map{|c| c} %>
   </br>
   </br>
 
