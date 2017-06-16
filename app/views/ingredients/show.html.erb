@@ -1,8 +1,10 @@
 <h2><%= @ingredient.name.upcase %></h2>
 <br></br>
-<p><strong>ALLERGEN WARNING?:</strong> <%= @ingredient.allergen_warning %></p>
-<p><strong>SPICE LEVEL:</strong> <%= @ingredient.spice_level %></p>
-<p><strong>TYPE:</strong> <%= @ingredient.ingredient_type %></p>
+<% if @ingredient.allergen_warning == true %>
+<p><strong>ALLERGEN WARNING</strong></p>
+<% end %>
+<p><strong>SPICE LEVEL:</strong> <%= @ingredient.ingredient_spice_level %></p>
+<p><strong>TYPE:</strong> <%= @ingredient.ingredient_type_sorter %></p>
 <%= link_to "VIEW RECIPES", {controller: 'recipe_ingredients', action: 'index', ingredient_id: @ingredient.id}, id: "nav-link" %>
 <!-- <#%= valid_user? @user %> helper? -->
 <% if @user && @user.admin? %>

@@ -3,10 +3,10 @@
   <% @recipes.each do |r| %>
     <ul>
       <li>
-        <%= link_to "#{r.name}", recipe_path(r), id: "nav-link" %>
+        <%= link_to "#{r.name}", recipe_path(r), class: "nav-link" %>
       </li>
     </ul>
   <% end %>
 <% else %>
-  <p>THIS INGREDIENT ISN'T CURRENTLY BEING USED IN ANY RECIPES! <%= link_to "CREATE ONE HERE", new_user_recipe_path(@user), id: "nav-link" %></p>
+  <p>THIS INGREDIENT ISN'T CURRENTLY BEING USED IN ANY RECIPES! <%= link_to "CREATE ONE HERE", new_user_recipe_path(@user), class: "nav-link" %></p>
 <% end %>

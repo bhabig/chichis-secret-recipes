@@ -41,7 +41,7 @@ body {
     max-width: 1020px;
   }
 
-  #registration1 {
+  .registration1 {
     background-color: rgba(20, 20, 20, 0.85);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -58,8 +58,15 @@ body {
     text-decoration: none;
   }
 
-  #registration1:hover {
+  .registration1:hover {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.95);
     opacity: 0.55;
+  }
+
+  .registration1:focus {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.95);
   }
 
   .thumb {
@@ -70,27 +77,6 @@ body {
   .profile {
     height: 200px;
     width: 175px;
-  }
-
-  #registration2 {
-    background-color: rgba(20, 20, 20, 0.85);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    color: rgba(225, 225, 225, 0.95);
-    text-align: center;
-    font-size: 100%;
-    margin: 10px auto;
-    max-width: 1020px;
-    padding: 1.0%; /* 18px / 800px */
-    width: auto;
-    display: inline-block;
-    border: 2px solid rgba(195, 0, 0, 1);
-    text-decoration: none;
-  }
-
-  #registration2:hover {
-    opacity: 0.55;
   }
 
   .not-signed-in-header h2 {
@@ -120,7 +106,7 @@ body {
     display: block;
   }
 
-  #header-link {
+  .header-link {
     background-color: rgba(23, 29, 34, 0.85);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -137,11 +123,18 @@ body {
     text-decoration: none;
   }
 
-  #header-link:hover {
+  .header-link:hover {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.95);
     opacity: 0.55;
   }
 
-  #nav-link {
+  .header-link:focus {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.95);
+  }
+
+  .nav-link {
     background-color: rgba(20, 20, 20, 0.85);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -157,9 +150,17 @@ body {
     text-decoration: none;
   }
 
-  #nav-link:hover {
+  .nav-link:hover {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.95);
     opacity: 0.55;
   }
+
+  .nav-link:focus {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.95);
+  }
+
 
   .signed-in {
     background: rgba(241, 241, 241, 0.925);

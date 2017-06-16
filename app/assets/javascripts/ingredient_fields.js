@@ -1,11 +1,14 @@
 
-  var counter = 1;
 
   function onClick() {
+
     $('#click').click(function(e) {
-      $(`#field_${counter}`).removeClass("hidden");
+      $.get('/ingredients/new', function(data) {
+        $('#fields_for_ingredients').append(data);
+      })
       e.preventDefault();
+
     });
-    counter++;
+
   }
   $(document).ready(onClick)

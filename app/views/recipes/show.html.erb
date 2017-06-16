@@ -1,6 +1,6 @@
 <h2><strong><%= @recipe.name.upcase %></strong></h2>
 <%= image_tag @recipe.recipe_avatar.url, class: "profile" %></br>
-<h5><strong>COOK TIME:</strong> <%= binding.pry %> min.</h5>
+<h5><strong>COOK TIME:</strong> <%= @recipe.recipe_cook_time %> </h5>
 <h5><strong>INGREDIENTS:</strong></h5><br>
   <ul>
     <% @recipe.ingredients.each do |i| %>
@@ -13,4 +13,4 @@
   </ul>
 <h5><strong>COOKING INSTRUCTIONS:</strong></h5>
 <p><%= @recipe.instructions %></p></br>
-<%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), id: "nav-link" %> || <%= link_to "DELETE", user_recipe_path(@user, @recipe), method: "delete", id: "nav-link" %>
+<%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), class: "nav-link" %> || <%= link_to "DELETE", user_recipe_path(@user, @recipe), method: "delete", class: "nav-link" %>

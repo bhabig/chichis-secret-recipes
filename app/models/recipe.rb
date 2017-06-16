@@ -15,8 +15,8 @@ class Recipe < ApplicationRecord
   end
 
   def ingredient_attributes=(t)
-    t.delete_if{|n,h| h[:name].empty?}
-    t.each do |num, hash|
+    t.delete_if{|h| h[:name].empty?}
+    t.each do |hash|
       ingredient = Ingredient.find_or_create_by(hash.except("measurement"))
       self.save
       self.ingredients << ingredient unless self.ingredients.include?(ingredient)
@@ -42,7 +42,9 @@ class Recipe < ApplicationRecord
     self.ingredients.delete(ingredient)
   end
 
-  def recipe_cook_time(recipe)
-    binding.pry
+  def recipe_cook_time
+    hours = self.cook_time / 60
+    minutes = self.cook_time % 60
+    return "#{hours} hours and #{minutes} minutes"
   end
 end

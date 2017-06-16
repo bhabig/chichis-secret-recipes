@@ -12,9 +12,7 @@ class IngredientsController < ApplicationController
   end
 
   def new #admin only #yield?
-    permission_yield do
-      @ingredient = Ingredient.new
-    end
+    render 'recipes/_ingredient_input', layout: false
   end
 
   def create

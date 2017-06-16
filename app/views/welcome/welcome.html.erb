@@ -4,7 +4,7 @@
     <div id="flash_alert"><%= flash[:alert] %></div>
   <% end %>
 
-  <%= link_to "SIGN IN", new_session_path, id: "registration1" %>
-   <%= link_to "SIGN UP", new_user_path, id: "registration2" %>
-   <%= link_to "SIGN IN WITH FACEBOOK", "/auth/facebook", id: "registration2" %>
+  <%= link_to "SIGN IN", new_session_path, class: "registration1", id: "one" %>
+   <%= link_to "SIGN UP", new_user_path, class: "registration1", id: "two" %>
+   <%= link_to "SIGN IN WITH FACEBOOK", "/auth/facebook", class: "registration1", id: "three" %>
 </div>

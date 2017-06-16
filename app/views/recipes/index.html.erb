@@ -1,4 +1,4 @@
-<% if @recipes && !@recipes.empty? %>
+<% if @recipes && !@recipes.empty? %> <!-- view helper yield function maybe -->
   <% if @user %>
     <h2><strong><%= @user.name.upcase %>'S RECIPES:</strong></h2>
   <% else %>
@@ -9,10 +9,10 @@
     <li>
       <h4><strong><%= r.name.upcase %></strong></h4>
       <p><%= image_tag r.recipe_avatar.url, class: "thumb" %></p>
-      <p><%= link_to "VIEW RECIPE", user_recipe_path(@user, r), id: "nav-link" %></p>
+      <p><%= link_to "VIEW RECIPE", user_recipe_path(@user, r), class: "nav-link" %></p>
     </li></br>
   </ul>
   <% end %>
 <% else %>
-  <h3>NO RECIPES JUST YET! CLICK <%= link_to "HERE", new_user_recipe_path(@user), id: "nav-link" %> TO CREATE ONE!</h3>
+  <h3>NO RECIPES JUST YET! CLICK <%= link_to "HERE", new_user_recipe_path(@user), class: "nav-link" %> TO CREATE ONE!</h3>
 <% end %>
