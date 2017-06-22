@@ -6,7 +6,7 @@ class Ingredient < ApplicationRecord
   validates_uniqueness_of :name
 
   def self.validation_checks(params=nil) #refactor by creating 2 helper methods for logic here
-    if !params["recipe"]["ingredient_attributes"].empty?
+    if params["recipe"]["ingredient_attributes"] && !params["recipe"]["ingredient_attributes"].empty?
       hash = params["recipe"]["ingredient_attributes"]
       hash.delete_if do |n|
         n[:name].empty?
@@ -31,11 +31,12 @@ class Ingredient < ApplicationRecord
         errors_array << "recipe could not be created because an ingredient with the name '#{array[0]}' already exists with different attributes. either select that ingredient from the existing menu or change the name of this ingredient"
       end
     end
+    binding.pry
     errors_array
   end
 
   def self.attribute_checks(params)
-    if !params["recipe"]["ingredient_attributes"].empty?
+    if params["recipe"]["ingredient_attributes"] && !params["recipe"]["ingredient_attributes"].empty?
       bad_ingredients = []
       @y = params[:recipe][:ingredient_attributes].map do |hash|
         hash.except("measurement").map{|key, val| key if val.empty?}

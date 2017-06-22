@@ -20,6 +20,7 @@ class RecipesController < ApplicationController
     recipe_create_update_yield do
       @recipe = Recipe.new(recipe_params)
       @recipe.ingredient_select(params[:recipe][:ingredient_select]) unless !(params[:recipe][:ingredient_select])
+      binding.pry 
       if @recipe.save
         redirect_to user_recipe_path(@recipe.user_id, @recipe)
       else
@@ -86,7 +87,7 @@ class RecipesController < ApplicationController
 
   def recipe_create_update_yield
     name_errors = Ingredient.validation_checks(params)
-    if !name_errors.empty?
+    if name_errors && !name_errors.empty?
       redirect_to new_user_recipe_path(current_user), alert: "#{name_errors.length} ingredients already exist, but have different attributes. please review carefully."
     else
       other_errors = Ingredient.attribute_checks(params)
