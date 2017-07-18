@@ -1,24 +1,27 @@
-# README
+# Project Title
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  Chichi's Secret Recipes
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+  -fork the repo from www.github.com/bhabig/chichis-secret-recipes
+  -clone the repo and cd into chichis-secret-recipes directory
+  -run `bundle install`to install dependencies
+  -run `rake db:migrate db:seed` to establish the database
+  -run `rails s` to interact with the app in your web browser
 
-* System dependencies
+## Built With
 
-* Configuration
+ -Ruby on Rails
 
-* Database creation
+## Versioning
 
-* Database initialization
+  -uses ruby v2.3.1
 
-* How to run the test suite
+## Authors
 
-* Services (job queues, cache servers, search engines, etc.)
+ **Bob Habig** - *Initial work*
 
-* Deployment instructions
+## License
 
-* ...
+  This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

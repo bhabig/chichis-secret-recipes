@@ -20,7 +20,6 @@ class RecipesController < ApplicationController
     recipe_create_update_yield do
       @recipe = Recipe.new(recipe_params)
       @recipe.ingredient_select(params[:recipe][:ingredient_select]) unless !(params[:recipe][:ingredient_select])
-      binding.pry 
       if @recipe.save
         redirect_to user_recipe_path(@recipe.user_id, @recipe)
       else

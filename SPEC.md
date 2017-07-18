@@ -12,7 +12,7 @@ Specs:
  [] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
     -form url: http://localhost:3000/users/1/recipes/new
     -model name: form for recipe includes nested ingredient forms via fields_for. writes to `ingredient_attributes=` setter in Recipe.rb which creates and/or associates
-    -**to make things work smoothly, 2 Ingredient.rb methods are used to ensure valid input prior to hitting `ingredient_attributes=`
+    -*to make things work smoothly, 2 Ingredient.rb methods are used to ensure valid input prior to hitting `ingredient_attributes=`*
  [x] Include signup (how e.g. Devise) custom
  [x] Include login (how e.g. Devise) custom
  [x] Include logout (how e.g. Devise) custom
@@ -28,4 +28,4 @@ Confirm:
  [] The application is pretty DRY
  [] Limited logic in controllers
  [] Views use helper methods if appropriate
- [x] Views use partials if appropriate
+ [] Views use partials if appropriate
