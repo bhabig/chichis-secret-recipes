@@ -2,7 +2,6 @@
   <% if @recipe.errors.any? %>
     <div class="signed-in" id="error_explanation">
       <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
       <ul>
       <% @recipe.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -33,7 +32,7 @@
     <% Ingredient.all.each do |ingdt| %>
         <% recipe_ingredient = RecipeIngredient.find_by(ingredient_id: ingdt.id, recipe_id: @recipe.id) %>
         <%= ff.fields_for "#{ingdt.name}" do |i| %>
-          <%= i.check_box :id, checked: @recipe.ingredients.include?(ingdt) %><%= i.label "#{ingdt.name.upcase}: " %> <%= i.text_field :measurement, value: recipe_ingredient && !recipe_ingredient.measurement.empty? ? recipe_ingredient.measurement : nil, placeholder: "MEASUREMENT" %>
+          <%= i.check_box :id, checked: @recipe.ingredients.include?(ingdt) %><%= i.label "#{ingdt.name.upcase}: " %> <%= i.text_field :measurement, value: (recipe_ingredient && recipe_ingredient.measurement && !recipe_ingredient.measurement.empty?) ? recipe_ingredient.measurement : nil, placeholder: "MEASUREMENT"%>
         <% end %><br></br>
       <% end %>
     <% end %>

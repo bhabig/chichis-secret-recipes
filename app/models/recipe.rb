@@ -18,9 +18,7 @@ class Recipe < ApplicationRecord
     t.delete_if{|h| h[:name].empty?}
     t.each do |hash|
       ingredient = Ingredient.find_or_create_by(hash.except("measurement"))
-      self.save
-      self.ingredients << ingredient unless self.ingredients.include?(ingredient)
-      self.recipe_ingredients.last.update(measurement: hash[:measurement])
+      self.recipe_ingredients.build(ingredient: ingredient, measurement: hash['measurement']) unless self.ingredients.include?(ingredient)
     end
   end
 
@@ -28,9 +26,11 @@ class Recipe < ApplicationRecord
     hash.each do |name, info_hash|
       @ingredient = Ingredient.find_by(name: name)
       if info_hash['id'].to_i == 1 && info_hash['measurement'] != ""
-        self.recipe_ingredients.build(ingredient_id: @ingredient.id, measurement: info_hash["measurement"]) unless !@ingredient || self.ingredients.include?(@ingredient)
+        self.recipe_ingredients.build(ingredient: @ingredient, measurement: info_hash['measurement']) unless !@ingredient || self.ingredients.include?(@ingredient)
       elsif info_hash['id'].to_i == 1 && info_hash['measurement'] == ""
         return "sorry, all ingredients need measurements"
+      elsif info_hash['id'].to_i == 0 && info_hash['measurement'] != ""
+        return "you must select an ingredient to give it a measurement"
       else
         self.remove_on_update(@ingredient) unless !self.ingredients.include?(@ingredient)
       end

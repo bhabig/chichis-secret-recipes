@@ -31,7 +31,6 @@ class Ingredient < ApplicationRecord
         errors_array << "recipe could not be created because an ingredient with the name '#{array[0]}' already exists with different attributes. either select that ingredient from the existing menu or change the name of this ingredient"
       end
     end
-    binding.pry
     errors_array
   end
 
