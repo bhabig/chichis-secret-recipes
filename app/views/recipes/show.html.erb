@@ -6,9 +6,9 @@
     <% @recipe.ingredients.each do |i| %>
       <% @recin = RecipeIngredient.find_by(ingredient_id: i.id, recipe_id: @recipe.id)%>
     <li>
-      <p><strong><%= i.name.upcase %> - </strong><%= @recin.measurement %></p>
-      <%= link_to "VIEW INGREDIENT", ingredient_path(i) %>
-    </li>
+      <p>
+      <strong><%= link_to "#{i.name.upcase}", ingredient_path(i) %></strong> <strong>(</strong> <%= @recin.measurement %> <strong>)</strong>
+    </li></br>
     <% end %>
   </ul>
 <h5><strong>COOKING INSTRUCTIONS:</strong></h5>

@@ -190,3 +190,7 @@ body {
  .hidden {
    display: none;
  }
+
+ #click {
+   text-decoration: none;
+ }

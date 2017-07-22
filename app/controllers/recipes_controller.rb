@@ -30,6 +30,11 @@ class RecipesController < ApplicationController
     end
   end
 
+  def recipe_ingredient_new
+    @ingredient = Ingredient.new
+    render :recipe_ingredient_new, layout: false
+  end
+
   def show #yield?
     logged_in_yield do
       render :show

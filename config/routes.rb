@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'ingredients/:ingredient_id/recipes', to: 'recipe_ingredients#index'
 
   resources :sessions, only: [:new, :create, :destroy]
-  get '/auth/:provider/callback', to: "sessions#facebook"
+  get '/auth/:provider/callback', to: 'sessions#facebook'
 
+  get 'recipe_ingredient_new', to: 'recipes#recipe_ingredient_new'
 end
