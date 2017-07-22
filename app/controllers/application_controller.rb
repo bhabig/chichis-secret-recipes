@@ -37,10 +37,12 @@ class ApplicationController < ActionController::Base
 
   def authorization_for_recipe_and_ingredient_yield
     if params[:user_id] && (params[:user_id].to_i == current_user.id || current_user.admin?)
+      binding.pry
       yield
     elsif params[:user_id] && params[:user_id].to_i != current_user.id && !current_user.admin?
       redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     else
+      binding.pry
       @recipes = Recipe.all
     end
   end

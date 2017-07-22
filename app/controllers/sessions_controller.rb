@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    set_user(params[:user][:name])
+    set_user(params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -43,10 +43,8 @@ class SessionsController < ApplicationController
   private
 
   def set_user(params)
-    @user = User.where("lower(name) = ?", params.downcase).first
+    @user = User.find_by(email: params)
   end
-
-  private
 
   def facebook_auth_check
     if auth

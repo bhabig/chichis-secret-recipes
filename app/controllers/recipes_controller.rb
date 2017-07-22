@@ -1,11 +1,15 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def index #full recipe collection set in authorization yield
     logged_in_yield do
       authorization_for_recipe_and_ingredient_yield do
         @user = User.find_by(id: params[:user_id])
         @recipes = current_user.recipes unless current_user.recipes.empty?
+        respond_to do |format|
+          format.html { render :index }
+          format.json { render json: @recipes }
+        end
       end
     end
   end
@@ -37,7 +41,11 @@ class RecipesController < ApplicationController
 
   def show #yield?
     logged_in_yield do
-      render :show
+      binding.pry
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @recipe }
+      end
     end
   end
 
