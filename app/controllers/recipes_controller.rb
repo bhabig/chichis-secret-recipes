@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     logged_in_yield do
       respond_to do |format|
         format.html { render :show }
-        format.json { render json: { recipe: @recipe, user: @user } }
+        format.json { render json: @recipe }
       end
     end
   end

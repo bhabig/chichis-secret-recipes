@@ -198,3 +198,19 @@ body {
  .i-hide {
    display: none;
  }
+
+ a {
+   text-decoration: none;
+   color: rgba(20, 20, 20, 0.85);
+ }
+
+ a:hover {
+   text-decoration: none;
+   color: rgba(195, 0, 0, 1);
+   opacity: .55;
+ }
+
+ a:focus {
+   text-decoration: none;
+   color: rgba(20, 20, 20, 0.85);
+ }

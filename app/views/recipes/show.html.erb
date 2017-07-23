@@ -2,14 +2,13 @@
 
 <h2 id="recipeName"><strong><%= @recipe.name.upcase %></strong></h2>
 <p id="recipeAvatar"><%= image_tag @recipe.recipe_avatar.url, class: "profile" %></p></br>
-<h5 id="recipeCookTime"><strong>COOK TIME:</strong> <%= @recipe.recipe_cook_time %> </h5>
+<p><strong>COOK TIME:</strong></p> <p id="recipeCookTime"> <%= @recipe.recipe_cook_time %> </p>
 <h5 ><strong>INGREDIENTS:</strong></h5><br>
   <ul id="recipeIngredients">
     <% @recipe.ingredients.each do |i| %>
       <% @recin = RecipeIngredient.find_by(ingredient_id: i.id, recipe_id: @recipe.id)%>
     <li>
-      <p>
-      <strong><%= link_to "#{i.name.upcase}", ingredient_path(i) %></strong> <strong>(</strong> <%= @recin.measurement %> <strong>)</strong>
+      <p><strong><%= link_to "#{i.name.upcase}", ingredient_path(i) %></strong> <strong>(</strong> <%= @recin.measurement %> <strong>)</strong>
       </p>
     </li></br>
     <% end %>
