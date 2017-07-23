@@ -21,7 +21,7 @@ function getUser(userId) {
 function getRecipe(recipeId) {
   $.get("/users/" + userId + "/recipes/" + recipeId + ".json", function(recipe) {
     $('#recipeName').text(recipe.name.toUpperCase());
-    $('#recipeAvatar').html("<img class='profile' src='/assets/" + recipe.recipe_avatar + "'></br>");
+    $('#recipeAvatar').html(imageFilter(recipe));
     $('#recipeCookTime').text(recipe.cook_time);
     $('#recipeIngredients').html("");
     for(let i = 0; i < recipe.ingredients.length; i++) {
@@ -33,6 +33,14 @@ function getRecipe(recipeId) {
     $('#recipeInstructions').text(recipe.instructions);
   });
 };
+
+function imageFilter(recipe) {
+  if (recipe.recipe_avatar.includes("/system/recipes/")) {
+    return "<img class='profile' src='" + recipe.recipe_avatar + "'></br>"
+  } else {
+    return "<img class='profile' src='/assets/" + recipe.recipe_avatar + "'></br>"
+  }
+}
 
 function adjustNextId(whatIsThis) {
   if((nextId+1) === whatIsThis.length) {

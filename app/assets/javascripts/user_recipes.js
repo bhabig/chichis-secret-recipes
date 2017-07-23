@@ -11,11 +11,19 @@ $(function() {
         $('h3').removeClass('i-hide');
         response.recipes.forEach(function(recipe) {
           var nameTag = '<h4>' + recipe.name.toUpperCase() + '</h4>';
-          var picTag =  "<img class='thumb' src='/assets/" + recipe.recipe_avatar + "' alt='Recipe default'></br>";
+          var picTag =  imageFilter(recipe);
           var showLinkTag = "<a class='nav-link' href='/users/" + recipe.user_id + "/recipes/" + recipe.id + "'>VIEW RECIPE</a></br>"
           $('#user-recipe-drop').append('<li>'+nameTag+picTag+showLinkTag+'</li>');
         });
       }
     });
   };
+
+  function imageFilter(recipe) {
+    if (recipe.recipe_avatar.includes("/system/recipes/")) {
+      return "<img class='thumb' src='" + recipe.recipe_avatar + "'></br>"
+    } else {
+      return "<img class='thumb' src='/assets/" + recipe.recipe_avatar + "'></br>";
+    }
+  }
 });
