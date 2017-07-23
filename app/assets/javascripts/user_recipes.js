@@ -1,17 +1,19 @@
 $(function() {
   $('#user-recipes').click(function(e) {
-    //debugger;
-    getUsersRecipes(this)
     e.preventDefault();
+    getUsersRecipes(this)
   });
 
   function getUsersRecipes(obj) {
-    $.get(obj.href + '.json', function(response) {
-      debugger;
-      if(response["recipes"].length > 0) {
-        response["recipes"].forEach(function(recipe) {
-          debugger;
-          //var recipe = `<h4>${recipe["name"]}</h4><p>${}`
+    var link = obj.href.slice(21,29);
+    $.get(link + '.json', function(response) {
+      if(response.recipes.length > 0) {
+        $('h3').removeClass('i-hide');
+        response.recipes.forEach(function(recipe) {
+          var nameTag = '<h4>' + recipe.name.toUpperCase() + '</h4>';
+          var picTag =  "<img class='thumb' src='/assets/" + recipe.recipe_avatar + "' alt='Recipe default'></br>";
+          var showLinkTag = "<a class='nav-link' href='/users/" + recipe.user_id + "/recipes/" + recipe.id + "'>VIEW RECIPE</a></br>"
+          $('#user-recipe-drop').append('<li>'+nameTag+picTag+showLinkTag+'</li>');
         });
       }
     });

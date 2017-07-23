@@ -194,3 +194,7 @@ body {
  #click {
    text-decoration: none;
  }
+
+ .i-hide {
+   display: none;
+ }
