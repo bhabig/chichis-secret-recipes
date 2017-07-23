@@ -21,13 +21,14 @@ function getUser(userId) {
 function getRecipe(recipeId) {
   $.get("/users/" + userId + "/recipes/" + recipeId + ".json", function(recipe) {
     $('#recipeName').text(recipe.name.toUpperCase());
-    $('#recipeAvatar').html("<img class='profile' src='/assets/" + recipe.recipe_avatar + "' alt='Recipe default'></br>");
+    $('#recipeAvatar').html("<img class='profile' src='/assets/" + recipe.recipe_avatar + "'></br>");
     $('#recipeCookTime').text(recipe.cook_time);
+    $('#recipeIngredients').html("");
     for(let i = 0; i < recipe.ingredients.length; i++) {
       var ingredient = recipe.ingredients[i];
       var measurement = recipe.recipe_ingredients[i].measurement;
       var addLi = "<li><p><a href='/ingredients/" + ingredient.id + "'><strong>" + ingredient.name.toUpperCase() + "</strong></a> <strong>(</strong>" + measurement + "<strong>)</strong></p></li>";
-      $('#recipeIngredients').html(addLi);
+      $('#recipeIngredients').append(addLi);
     }
     $('#recipeInstructions').text(recipe.instructions);
   });
