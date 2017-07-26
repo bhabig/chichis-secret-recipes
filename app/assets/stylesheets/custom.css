@@ -214,3 +214,36 @@ body {
    text-decoration: none;
    color: rgba(20, 20, 20, 0.85);
  }
+
+ .like-this-recipe {
+   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   color: rgba(195, 0, 0, 1);
+   font-size: 85%;
+   text-align: center;
+   margin: 3px auto;
+   max-width: 60px;
+   padding: 0.5%; /* 18px / 800px */
+   width: auto;
+   display: inline-block;
+   text-decoration: none;
+   border: 1px solid black;
+ }
+
+ #recipe-is-liked {
+   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   font-size: 85%;
+   text-align: center;
+   margin: 3px auto;
+   max-width: 60px;
+   padding: 0.5%; /* 18px / 800px */
+   width: auto;
+   display: inline-block;
+   text-decoration: none;
+   border: 1px solid #00BCE1;
+   background-color: #00BCE1;
+   color: white;
+ }

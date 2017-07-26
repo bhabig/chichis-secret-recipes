@@ -15,4 +15,5 @@
   </ul>
 <h5><strong>COOKING INSTRUCTIONS:</strong></h5>
 <p id="recipeInstructions"><%= @recipe.instructions %></p></br>
+<div class="like-this-recipe" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">LIKE</div></br>
 <div id="edit-and-delete-buttons"><%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), class: "nav-link" %> || <%= link_to "DELETE", user_recipe_path(@user, @recipe), method: "delete", class: "nav-link" %></div>
