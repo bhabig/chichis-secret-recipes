@@ -15,7 +15,7 @@
   </ul>
 <h5><strong>COOKING INSTRUCTIONS:</strong></h5>
 <p id="recipeInstructions"><%= @recipe.instructions %></p></br>
-<% if @recipe.likes.empty? %>
+<% if @recipe.likes.where(user_id: @user).empty? %>
   <div class="recipe-like-status" id="like-this-recipe" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">LIKE</div></br>
 <% elsif @recipe.likes.where(user_id: @user).last.status === false %>
   <div class="recipe-like-status" id="like-this-recipe" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">LIKE</div></br>
