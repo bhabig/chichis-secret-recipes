@@ -4,14 +4,21 @@ class LikesController < ApplicationController
   end
 
   def create_or_update
-    binding.pry
-    render json: @like, status: 201
+    @like = Like.find_by(like_params)
+    if @like
+      @like.update(like_params)
+      @like.save
+      render json: @like
+    else
+      @like = Like.create(like_params)
+      render json: @like, status: 201
+    end
   end
 
   private
 
   def like_params
-    params.require(:like).permit(:user_id, :recipe_id)
+    params.require(:like).permit(:user_id, :recipe_id, :status)
   end
 
   def set_user

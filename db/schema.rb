@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726190559) do
+ActiveRecord::Schema.define(version: 20170727000057) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20170726190559) do
   create_table "likes", force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "status"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "status",     default: false
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|

@@ -1,7 +1,7 @@
-var nextId = 0;
+var nextId;
 var recipeId;
 var userId;
-var whatIsThis;
+var whatIsThis = [];
 
 function clickNextRecipe() {
   $('#next-recipe').click(function(e) {
@@ -12,7 +12,9 @@ function clickNextRecipe() {
 
 function getUser(userId) {
   $.get("/users/" + userId + ".json", function(data) {
-    whatIsThis = data.recipes;
+    data.recipes.forEach(function(r) {
+      whatIsThis.push(r.id);
+    });
   }).done(function() {
     adjustNextId(whatIsThis);
   });
@@ -31,8 +33,22 @@ function getRecipe(recipeId) {
       $('#recipeIngredients').append(addLi);
     }
     $('#recipeInstructions').text(recipe.instructions);
+    likeStatus(recipe);
   });
 };
+
+function likeStatus(recipe) {
+  if (recipe.likes[recipe.likes.length -1] === undefined) {
+    $(".recipe-like-status").prop('id', 'like-this-recipe');
+    $(".recipe-like-status").text("LIKE");
+  } else if (recipe.likes[recipe.likes.length -1].status === false) {
+    $(".recipe-like-status").prop('id', 'like-this-recipe');
+    $(".recipe-like-status").text("LIKE");
+  } else {
+    $(".recipe-like-status").prop('id', 'recipe-is-liked');
+    $(".recipe-like-status").text("LIKED!");
+  }
+}
 
 function imageFilter(recipe) {
   if (recipe.recipe_avatar.includes("/system/recipes/")) {
@@ -43,12 +59,16 @@ function imageFilter(recipe) {
 }
 
 function adjustNextId(whatIsThis) {
+  if (nextId === undefined) {
+    nextId = whatIsThis.indexOf(parseInt($('#next-recipe').attr('data-recipe-id')));
+  }
+
   if((nextId+1) === whatIsThis.length) {
     nextId = 0;
   } else {
     nextId++;
   }
-  recipeId = whatIsThis[`${nextId}`].id;
+  recipeId = whatIsThis[`${nextId}`];
   getRecipe(recipeId);
 }
 
