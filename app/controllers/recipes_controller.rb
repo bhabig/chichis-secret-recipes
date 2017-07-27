@@ -70,7 +70,9 @@ class RecipesController < ApplicationController
 
   def destroy #clunky, but no refactor options are jumping out at me. is a yield pointless?
     destroy_authorization_yield do
+      recipe_ingredient_destroy_id = @recipe.id
       if @recipe.destroy
+        RecipeIngredient.all.each{|ri| ri.destroy if ri.recipe_id == recipe_ingredient_destroy_id}
         redirect_to user_recipes_path(params[:user_id])
       else
         redirect_to user_recipe_path(params[:user_id], @recipe)

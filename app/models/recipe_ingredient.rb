@@ -17,8 +17,8 @@ class RecipeIngredient < ApplicationRecord
   end
 
   def self.recipes_for_ingredient(ing_id)
-    recipe_ids = self.all.map{|ri| ri.recipe_id if ri.ingredient_id == ing_id}
-    @recipes = recipe_ids.compact.map{|id| Recipe.find_by(id: id)}
+    rec_ings = self.all.where(ingredient_id: ing_id)
+    @recipes = rec_ings.map{|ri| Recipe.find(ri.recipe_id)}
   end
 
 end
