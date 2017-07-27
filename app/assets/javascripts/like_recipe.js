@@ -2,6 +2,7 @@ $(function() {
   $('.recipe-like-status').click(function(e) {
     var userId = parseInt($(this).attr('data-user-id'));
     var recipeId = parseInt($(this).attr('data-recipe-id'));
+    debugger;
     var likedOrNot = $(this).attr('id');
 
     if ( likedOrNot === "recipe-is-liked" ) {
