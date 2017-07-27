@@ -40,17 +40,17 @@ function getRecipe(recipeId) {
 function likeStatus(recipe) {
   if (recipe.likes.length === 0) {
     $(".recipe-like-status").prop('id', 'like-this-recipe');
-    $(".recipe-like-status").text("LIKE");
+    $(".recipe-like-status").text("LEARN");
     $(".recipe-like-status").attr('data-recipe-id', recipe.id.toString());
     $(".recipe-like-status").attr('data-user-id', recipe.user_id.toString());
   } else if (recipe.likes[recipe.likes.length - 1].status === false) {
     $(".recipe-like-status").prop('id', 'like-this-recipe');
-    $(".recipe-like-status").text("LIKE");
+    $(".recipe-like-status").text("LEARN");
     $(".recipe-like-status").attr('data-recipe-id', recipe.id.toString());
     $(".recipe-like-status").attr('data-user-id', recipe.user_id.toString());
   } else {
     $(".recipe-like-status").prop('id', 'recipe-is-liked');
-    $(".recipe-like-status").text("LIKED!");
+    $(".recipe-like-status").text("LOVED!");
     $(".recipe-like-status").attr('data-recipe-id', recipe.id.toString());
     $(".recipe-like-status").attr('data-user-id', recipe.user_id.toString());
   }

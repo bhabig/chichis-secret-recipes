@@ -219,7 +219,7 @@ body {
    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-   color: rgba(195, 0, 0, 1);
+   color: #00BCE1;
    font-size: 85%;
    text-align: center;
    margin: 3px auto;
@@ -227,8 +227,8 @@ body {
    padding: 0.5%; /* 18px / 800px */
    width: auto;
    display: inline-block;
-   text-decoration: none;
-   border: 1px solid black;
+   text-decoration: bold;
+   border: 1.25px solid #00BCE1;
  }
 
  #recipe-is-liked {

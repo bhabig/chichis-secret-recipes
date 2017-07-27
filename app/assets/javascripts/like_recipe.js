@@ -26,10 +26,10 @@ $(function() {
     $.post("/users/" + userId + "/recipes/" + recipeId + "/likes", likeParams).done(function(response) {
       if ( likedOrNot === "like-this-recipe" ) {
         $(".recipe-like-status").prop('id', 'recipe-is-liked');
-        $(".recipe-like-status").text("LIKED!");
+        $(".recipe-like-status").text("LOVED!");
       } else if ( likedOrNot === "recipe-is-liked" ){
         $(".recipe-like-status").prop('id', 'like-this-recipe');
-        $(".recipe-like-status").text("LIKE");
+        $(".recipe-like-status").text("LEARN");
       };
     });
   });
