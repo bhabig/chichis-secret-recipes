@@ -5,7 +5,8 @@ $(function() {
   });
 
   function getUsersRecipes(obj) {
-    var link = obj.href.slice(21,29);
+    var x = obj.href.split('/');
+    var link = "/" + x[3] + "/" + x[4]
     $.get(link + '.json', function(response) {
       if(response.recipes.length > 0) {
         $('h3').removeClass('i-hide');
