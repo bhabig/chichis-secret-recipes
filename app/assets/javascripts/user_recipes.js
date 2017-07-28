@@ -6,23 +6,23 @@ $(function() {
   //COMMENTS ARE FOR CERNAN SPECIFICALLY TO ILLUSTRATE THE CHANGES MADE
 
   //new constructor function for recipe
-  function Recipe(name, picture, id, user_id, formatName, formatPic, formatLink) {
+  function Recipe(name, picture, id, user_id) {
     this.name = name;
     this.picture = picture;
     this.id = id;
     this.user_id = user_id;
-    this.formatName = formatName; //formatter?
-    this.formatPic = formatPic; //formatter?
-    this.formatLink = formatLink; //formatter?
+    // this.formatName = formatName; //formatter?
+    // this.formatPic = formatPic; //formatter?
+    // this.formatLink = formatLink; //formatter?
   }
 
   //NEW...formatter?
-  function formatName() {
+  Recipe.prototype.formatName = function() {
     return '<h4>' + this.name + '</h4>';
   }
 
   //used to be called imageFilter(image)...formatter?
-  function formatPic() {
+  Recipe.prototype.formatPic = function() {
     if (this.picture.includes("/system/recipes/")) {
       return "<img class='thumb' src='" + this.picture + "'></br>"
     } else {
@@ -31,7 +31,7 @@ $(function() {
   }
 
   //NEW...formatter?
-  function formatLink() {
+  Recipe.prototype.formatLink = function() {
     return "<a class='nav-link' href='/users/" + this.user_id + "/recipes/" + this.id + "'>VIEW RECIPE</a></br>"
   }
 
@@ -48,7 +48,7 @@ $(function() {
           var $li = $(document.createElement('li'));
 
           //this object model prototype is new and is replacing the more 'manual' way of doing it. there is a key for each //trait value and a function for each html element that needed to be created and appended to the recipe <li>
-          var buildRecipe = new Recipe(recipe.name.toUpperCase(), recipe.recipe_avatar, recipe.id, recipe.user_id, formatName, formatPic, formatLink);
+          var buildRecipe = new Recipe(recipe.name.toUpperCase(), recipe.recipe_avatar, recipe.id, recipe.user_id);
 
           //the lines below used to be the lines commented at the bottom of the file
           $li.append(buildRecipe.formatName());
