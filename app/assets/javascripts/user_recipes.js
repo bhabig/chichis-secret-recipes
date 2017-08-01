@@ -23,7 +23,13 @@ class Recipe {
 $(function() {
   $('#user-recipes').click(function(e) {
     e.preventDefault();
-    getUsersRecipes(this)
+    if($('#user-recipe-drop').children().length === 0) {
+      getUsersRecipes(this);
+      $('#user-recipes').text('HIDE RECIPES');
+    } else {
+      $('#user-recipe-drop')[0].innerHTML = "";
+      $('#user-recipes').text('YOUR RECIPES');
+    }
   });
 
   function getUsersRecipes(obj) {
@@ -37,7 +43,6 @@ $(function() {
           var $li = $(document.createElement('li'));
 
           var buildRecipe = new Recipe(recipe.name.toUpperCase(), recipe.recipe_avatar, recipe.id, recipe.user_id);
-          debugger;
           $li.append(buildRecipe.formatName());
           $li.append(buildRecipe.formatPic());
           $li.append(buildRecipe.formatLink());
