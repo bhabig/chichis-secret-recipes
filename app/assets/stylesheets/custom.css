@@ -6,7 +6,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-color: black;
+    background-color: white;
     opacity: 0.90:
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -15,7 +15,7 @@ body {
   }
 
   .not-signed-in-header {
-    background-color: rgba(20, 20, 20, 0.75);
+    background-color: rgba(200, 200, 200, 0.75);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -26,19 +26,19 @@ body {
     width: 87.5%;
   }
 
-  h1 {
+  .home_page {
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    background-color: rgba(12, 12, 12, 1);
-    color: rgba(195, 0, 0, 1);
+    background-color: rgba(20, 20, 20, 0.75);
+    color: rgba(225, 225, 225, .9);
     font-size: 300%;
     margin: 100px auto;
-    text-decoration: underline overline;
     text-align: center;
     position: inline-block;
     padding: 1.0%;
     max-width: 1020px;
+    border: 2px solid rgba(195, 0, 0, 1);
   }
 
   .registration1 {
