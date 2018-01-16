@@ -26,7 +26,7 @@
   </br>
   </br>
 
-  <% if !@recipe.recipe_ingredients.empty? || !@recipe.id %>
+  <% if !@recipe.recipe_ingredients.empty? || !@recipe.id.nil? || !Ingredient.all.empty? %>
   <p><strong>SELECT OR EDIT INGREDIENTS:</strong></p>
   <%= f.fields_for :ingredient_select do |ff| %>
     <% Ingredient.all.each do |ingdt| %>
