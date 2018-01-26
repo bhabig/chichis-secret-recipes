@@ -1,16 +1,15 @@
 
 
 body {
-    background: url('/assets/Fall-herbs-and-spices.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-color: black;
-    opacity: 0.90:
+    background-color: #9D1309;
+    /*opacity: 0.90:
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
     line-height: 18px;
   }
 
@@ -94,44 +93,59 @@ body {
   }
 
   .signed-in-header {
-    background-color: rgba(23, 29, 34, 1);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    /*background-image: url('./images/cropped-spices-header1.jpg') no-repeat center center fixed;*/
+    /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
     text-align: center;
-    color: white;
+    height: 25%;
     margin: auto auto;
-    max-width: 1020px;
-    width: 90%;
+    background-color: #FFCC11;
+    /*max-width: 1300px;*/
+    min-width: 760px;
+    width: 77.5%;
     display: block;
+    color: #9D1309;
+  }
+
+  .header-image {
+    background-image: url('cropped-spices-header1.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #FFFFF0;
+    font-size: 66px;
+    padding-top: 65px;
+    height: 175px;
   }
 
   .header-link {
-    background-color: rgba(23, 29, 34, 0.85);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    color: rgba(225, 225, 225, 0.95);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
+    color: #9D1309;
+    font-weight: bold;
     text-align: center;
-    font-size: 75%;
+    font-size: 18px;
     margin: 7px auto;
-    max-width: 1020px;
+    max-width: 1300px;
     padding: 0.75%; /* 18px / 800px */
     width: auto;
     display: inline-block;
-    border: 2px solid rgba(195, 0, 0, 1);
+    /*border: 2px solid rgba(195, 0, 0, 1);*/
     text-decoration: none;
   }
 
   .header-link:hover {
     text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
+    color: #668014;
     opacity: 0.55;
   }
 
   .header-link:focus {
     text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
+    color: #668014;
   }
 
   .nav-link {
@@ -143,7 +157,7 @@ body {
     font-size: 85%;
     text-align: center;
     margin: 3px auto;
-    max-width: 1020px;
+    max-width: 1300px;
     padding: 0.5%; /* 18px / 800px */
     width: auto;
     display: inline-block;
@@ -163,17 +177,18 @@ body {
 
 
   .signed-in {
-    background: rgba(241, 241, 241, 0.925);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    background: #FFFFFF;
+    /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
     color: #4f3639;
     margin: auto auto;
-    max-width: 1020px;
+    min-width: 760px;
     padding: 1.75%; /* 18px / 800px */
-    width: 90%;
-    border: 2px rgba(195, 0, 0, 0.90);
-    position: inline-block;
+    width: 77.5%;
+    border: 2px solid #E8E8E8;
+    min-height: 400px;
+    /*display: inline-block;*/
   }
 
   #flash_alert {
@@ -184,8 +199,8 @@ body {
   }
 
   .signed-in h2 {
-    color: rgba(195, 0, 0, 1);
- }
+    color: #5E2605;
+  }
 
  .hidden {
    display: none;
