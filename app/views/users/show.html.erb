@@ -1,5 +1,5 @@
-<h2>YOU MADE IT, <%= @user.name.upcase %>!</h2>
-<%= image_tag @user.user_avatar.url, class: "profile" %><br></br>
+<h2><%= @user.name.split(' ').map{|w| w.capitalize}.join(' ') %>'s Profile</h2>
+<!-- <%= image_tag @user.user_avatar.url, class: "profile" %><br></br> -->
 <div>
   <h3 class="i-hide">YOUR RECIPES:</h3>
   <ul id="user-recipe-drop"></ul>

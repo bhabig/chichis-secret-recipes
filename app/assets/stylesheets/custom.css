@@ -6,6 +6,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     background-color: #9D1309;
+
     /*opacity: 0.90:
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -98,12 +99,12 @@ body {
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
     text-align: center;
-    height: 25%;
-    margin: auto auto;
     background-color: #FFCC11;
+    height: 15%;
+    margin: auto auto;
     /*max-width: 1300px;*/
     min-width: 760px;
-    width: 77.5%;
+    width: 100%;
     display: block;
     color: #9D1309;
   }
@@ -117,20 +118,27 @@ body {
     color: #FFFFF0;
     font-size: 66px;
     padding-top: 65px;
-    height: 175px;
+    height: 150px;
   }
 
   .header-link {
     /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
-    color: #9D1309;
-    font-weight: bold;
+    color:  #9D1309;
+    border-top: 1px solid #9D1309;
+    border-bottom: 1px solid #9D1309;
     text-align: center;
     font-size: 18px;
     margin: 7px auto;
     max-width: 1300px;
-    padding: 0.75%; /* 18px / 800px */
+    /*height: auto;*/
+    /*padding: 0.75%; /* 18px / 800px */
+    margin-left: 2.6%;
+    margin-right: 2.6%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    height: 100%;
     width: auto;
     display: inline-block;
     /*border: 2px solid rgba(195, 0, 0, 1);*/
@@ -149,7 +157,8 @@ body {
   }
 
   .nav-link {
-    background-color: rgba(20, 20, 20, 0.85);
+    background-color: #036635;
+    opacity: .85;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -177,15 +186,16 @@ body {
 
 
   .signed-in {
-    background: #FFFFFF;
+    background: #F0F0F0;
     /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
     color: #4f3639;
     margin: auto auto;
+    margin-top: 2.5%;
     min-width: 760px;
     padding: 1.75%; /* 18px / 800px */
-    width: 77.5%;
+    width: 72.5%;
     border: 2px solid #E8E8E8;
     min-height: 400px;
     /*display: inline-block;*/
@@ -199,7 +209,10 @@ body {
   }
 
   .signed-in h2 {
-    color: #5E2605;
+    color: black;
+    border-bottom: 2px solid black;
+    padding-bottom: 1%;
+    width: auto;
   }
 
  .hidden {
