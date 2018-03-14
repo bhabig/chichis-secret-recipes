@@ -29,3 +29,23 @@ Confirm:
  [] Limited logic in controllers
  [] Views use helper methods if appropriate
  [] Views use partials if appropriate
+
+
+ ---------------------------------------------------------------------------------------------------
+
+ Specs:
+
+ [x] Use jQuery for implementing new requirements
+ [x] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend. -carousel of recipes
+ [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. -'view recipes' button on user show
+ [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM. - user's recipes on user show page
+ [x] Use your Rails API and a form to create a resource and render the response without a page refresh. - like button on recipe show
+ [x] Translate JSON responses into js model objects. - constructor used for user's recipe collection appending
+ ?[x] At least one of the js model objects must have at least one method added by your code to the prototype. - believe this is formatName, formatPic, formatLink
+
+Confirm
+
+ [] You have a large number of small Git commits
+ [x] Your commit messages are meaningful
+ [x] You made the changes in a commit that relate to the commit message
+ [] You don't include changes in a commit that aren't related to the commit message

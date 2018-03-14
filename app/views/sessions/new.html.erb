@@ -5,8 +5,8 @@
   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
   <h2>SIGN IN BELOW</h2>
   <%= form_for @user, url: sessions_path do |f| %>
-    <%= f.label "NAME:" %>
-    <%= f.text_field :name %>
+    <%= f.label "EMAIL:" %>
+    <%= f.text_field :email %>
     </br>
     <%= f.label "PASSWORD:" %>
     <%= f.password_field :password %>

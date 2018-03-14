@@ -12,7 +12,6 @@ class IngredientsController < ApplicationController
   end
 
   def new #admin only #yield?
-    render 'recipes/_ingredient_input', layout: false
   end
 
   def create

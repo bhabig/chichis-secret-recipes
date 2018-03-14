@@ -1,4 +1,8 @@
-<h2><%= @user.name.upcase %>'S PROFILE:</h2>
+<h2><%= @user.name.split(' ').map{|w| w.capitalize}.join(' ') %>'s Profile</h2>
 <!-- <%= image_tag @user.user_avatar.url, class: "profile" %><br></br> -->
-<%= link_to "YOUR RECIPES", user_recipes_path(@user), class: "nav-link" %>
+<div>
+  <h3 class="i-hide">YOUR RECIPES:</h3>
+  <ul id="user-recipe-drop"></ul>
+</div>
+<%= link_to "YOUR RECIPES", user_recipes_path(@user), class: "nav-link", id: "user-recipes" %>
 <%= link_to "ADD RECIPE", new_user_recipe_path(@user), class: "nav-link" %>

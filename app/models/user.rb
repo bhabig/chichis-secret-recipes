@@ -1,5 +1,11 @@
 class User < ApplicationRecord
   has_many :recipes
+  has_many :likes
+  has_many :liked_recipes, through: :likes,
+                    class_name: "Like",
+                    foreign_key: "recipe_id",
+                    source: :recipe #specifying source key to this alias working
+
   has_attached_file :user_avatar, default_url: ':style/user_default.png'
   validates_attachment_content_type :user_avatar, content_type: /\Aimage\/.*\z/
   has_secure_password

@@ -21,7 +21,10 @@ class UsersController < ApplicationController
 
   def show #yield + refactor
     user_authorization_check_yield do#turn into private method & use before_action
-      render :show
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @user }
+      end
     end
   end
 

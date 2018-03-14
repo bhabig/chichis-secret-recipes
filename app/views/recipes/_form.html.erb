@@ -39,14 +39,14 @@
   <% end %>
 
 </br><p><strong>CREATE INGREDIENTS TO USE IN THIS RECIPE:</strong></p><br>
-<div id="fields_for_ingredients" style="background-color: rgba(20, 20, 20, 0.85); color: rgba(225, 225, 225, 0.95)"></div>
+<div id="fields_for_ingredients" style="background-color: rgba(20, 20, 20, 0.85); color: rgba(225, 225, 225, 0.95)", size: "100"></div>
 <p class="nav-link"><a href="#" id="click" style="color: rgba(225, 225, 225, 0.95)">add ingredient</a></p>
 
 
   </br>
   </br>
   <%= f.label :instructions, "INSTRUCTIONS:" %><br>
-  <%= f.text_area :instructions, size: "70x15", placeholder: "ENTER INSTRUCTIONS HERE"%>
+  <%= f.text_area :instructions, size: "106x15", placeholder: "ENTER INSTRUCTIONS HERE"%>
   </br>
   <%= f.submit class: "registration2" %>
 <% end %>

@@ -1,11 +1,15 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def index #full recipe collection set in authorization yield
     logged_in_yield do
       authorization_for_recipe_and_ingredient_yield do
         @user = User.find_by(id: params[:user_id])
         @recipes = current_user.recipes unless current_user.recipes.empty?
+        respond_to do |format|
+          format.html { render :index }
+          format.json { render json: @recipes }
+        end
       end
     end
   end
@@ -30,9 +34,17 @@ class RecipesController < ApplicationController
     end
   end
 
+  def recipe_ingredient_new
+    @ingredient = Ingredient.new
+    render :recipe_ingredient_new, layout: false
+  end
+
   def show #yield?
     logged_in_yield do
-      render :show
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @recipe }
+      end
     end
   end
 
@@ -58,7 +70,9 @@ class RecipesController < ApplicationController
 
   def destroy #clunky, but no refactor options are jumping out at me. is a yield pointless?
     destroy_authorization_yield do
+      recipe_ingredient_destroy_id = @recipe.id
       if @recipe.destroy
+        RecipeIngredient.all.each{|ri| ri.destroy if ri.recipe_id == recipe_ingredient_destroy_id}
         redirect_to user_recipes_path(params[:user_id])
       else
         redirect_to user_recipe_path(params[:user_id], @recipe)

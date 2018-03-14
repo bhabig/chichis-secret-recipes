@@ -1,192 +1,275 @@
-
-
 body {
-    background: url('/assets/Fall-herbs-and-spices.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-color: white;
-    opacity: 0.90;
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    line-height: 18px;
-  }
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #9D1309;
 
-  .not-signed-in-header {
-    background-color: rgba(200, 200, 200, 0.75);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    text-align: center;
-    margin: -100px auto;
-    max-width: 1020px;
-    padding: 3.5%; /* 18px / 800px */
-    width: 87.5%;
-  }
+  /*opacity: 0.90:
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
+  line-height: 18px;
+}
 
-  .home_page {
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    background-color: rgba(20, 20, 20, 0.75);
-    color: rgba(225, 225, 225, .9);
-    font-size: 300%;
-    margin: 100px auto;
-    text-align: center;
-    position: inline-block;
-    padding: 1.0%;
-    max-width: 1020px;
-    border: 2px solid rgba(195, 0, 0, 1);
-  }
+.not-signed-in-header {
+  background-color: rgba(20, 20, 20, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  text-align: center;
+  margin: -100px auto;
+  max-width: 1020px;
+  padding: 3.5%; /* 18px / 800px */
+  width: 87.5%;
+}
 
-  .registration1 {
-    background-color: rgba(20, 20, 20, 0.85);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    color: rgba(225, 225, 225, 0.95);
-    text-align: center;
-    font-size: 100%;
-    margin: 10px auto;
-    max-width: 1020px;
-    padding: 1.0%; /* 18px / 800px */
-    width: auto;
-    display: inline-block;
-    border: 2px solid rgba(195, 0, 0, 1);
-    text-decoration: none;
-  }
+h1 {
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  background-color: rgba(12, 12, 12, 1);
+  color: rgba(195, 0, 0, 1);
+  font-size: 300%;
+  margin: 100px auto;
+  text-decoration: underline overline;
+  text-align: center;
+  position: inline-block;
+  padding: 1.0%;
+  max-width: 1020px;
+}
 
-  .registration1:hover {
-    text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
-    opacity: 0.55;
-  }
+.registration1 {
+  background-color: rgba(20, 20, 20, 0.85);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  color: rgba(225, 225, 225, 0.95);
+  text-align: center;
+  font-size: 100%;
+  margin: 10px auto;
+  max-width: 1020px;
+  padding: 1.0%; /* 18px / 800px */
+  width: auto;
+  display: inline-block;
+  border: 2px solid rgba(195, 0, 0, 1);
+  text-decoration: none;
+}
 
-  .registration1:focus {
-    text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
-  }
+.registration1:hover {
+  text-decoration: none;
+  color: rgba(225, 225, 225, 0.95);
+  opacity: 0.55;
+}
 
-  .thumb {
-    height: 130px;
-    width: 100px;
-  }
+.registration1:focus {
+  text-decoration: none;
+  color: rgba(225, 225, 225, 0.95);
+}
 
-  .profile {
-    height: 200px;
-    width: 175px;
-  }
+.thumb {
+  height: 130px;
+  width: 100px;
+}
 
-  .not-signed-in-header h2 {
-    color: rgba(195, 0, 0, 1);
-    font-weight: bold;
-    text-align: center;
-  }
+.profile {
+  height: 200px;
+  width: 175px;
+}
 
-  .new_user {
-    color: rgba(225, 225, 225, 0.95);
-    padding: 2%;
-    width: 50px center;
-    font-weight: bold;
-    text-align: center;
-  }
+.not-signed-in-header h2 {
+  color: rgba(195, 0, 0, 1);
+  font-weight: bold;
+  text-align: center;
+}
 
-  .signed-in-header {
-    background-color: rgba(23, 29, 34, 1);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    text-align: center;
-    color: white;
-    margin: auto auto;
-    max-width: 1020px;
-    width: 90%;
-    display: block;
-  }
+.new_user {
+  color: rgba(225, 225, 225, 0.95);
+  padding: 2%;
+  width: 50px center;
+  font-weight: bold;
+  text-align: center;
+}
 
-  .header-link {
-    background-color: rgba(23, 29, 34, 0.85);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    color: rgba(225, 225, 225, 0.95);
-    text-align: center;
-    font-size: 75%;
-    margin: 7px auto;
-    max-width: 1020px;
-    padding: 0.75%; /* 18px / 800px */
-    width: auto;
-    display: inline-block;
-    border: 2px solid rgba(195, 0, 0, 1);
-    text-decoration: none;
-  }
+.signed-in-header {
+  /*background-image: url('./images/cropped-spices-header1.jpg') no-repeat center center fixed;*/
+  /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
+  text-align: center;
+  background-color: #FFCC11;
+  height: 15%;
+  margin: auto auto;
+  /*max-width: 1300px;*/
+  min-width: 760px;
+  width: 100%;
+  display: block;
+  color: #9D1309;
+}
 
-  .header-link:hover {
-    text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
-    opacity: 0.55;
-  }
+.header-image {
+  background-image: url('cropped-spices-header1.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #FFFFF0;
+  font-size: 66px;
+  padding-top: 65px;
+  height: 150px;
+}
 
-  .header-link:focus {
-    text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
-  }
+.header-link {
+  /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
+  color:  #9D1309;
+  border-top: 1px solid #9D1309;
+  border-bottom: 1px solid #9D1309;
+  text-align: center;
+  font-size: 18px;
+  margin: 7px auto;
+  max-width: 1300px;
+  /*height: auto;*/
+  /*padding: 0.75%; /* 18px / 800px */
+  margin-left: 2.6%;
+  margin-right: 2.6%;
+  padding-top: .5%;
+  padding-bottom: .5%;
+  height: 100%;
+  width: auto;
+  display: inline-block;
+  /*border: 2px solid rgba(195, 0, 0, 1);*/
+  text-decoration: none;
+}
 
-  .nav-link {
-    background-color: rgba(20, 20, 20, 0.85);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    color: rgba(225, 225, 225, 0.95);
-    font-size: 85%;
-    text-align: center;
-    margin: 3px auto;
-    max-width: 1020px;
-    padding: 0.5%; /* 18px / 800px */
-    width: auto;
-    display: inline-block;
-    text-decoration: none;
-  }
+.header-link:hover {
+  text-decoration: none;
+  color: #668014;
+  opacity: 0.55;
+}
 
-  .nav-link:hover {
-    text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
-    opacity: 0.55;
-  }
+.header-link:focus {
+  text-decoration: none;
+  color: #668014;
+}
 
-  .nav-link:focus {
-    text-decoration: none;
-    color: rgba(225, 225, 225, 0.95);
-  }
+.nav-link {
+  background-color: #036635;
+  opacity: .85;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  color: rgba(225, 225, 225, 0.95);
+  font-size: 85%;
+  text-align: center;
+  margin: 3px auto;
+  max-width: 1300px;
+  padding: 0.5%; /* 18px / 800px */
+  width: auto;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: rgba(225, 225, 225, 0.95);
+  opacity: 0.55;
+}
+
+.nav-link:focus {
+  text-decoration: none;
+  color: rgba(225, 225, 225, 0.95);
+}
 
 
-  .signed-in {
-    background: rgba(241, 241, 241, 0.925);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    color: #4f3639;
-    margin: auto auto;
-    max-width: 1020px;
-    padding: 1.75%; /* 18px / 800px */
-    width: 90%;
-    border: 2px rgba(195, 0, 0, 0.90);
-    position: inline-block;
-  }
+.signed-in {
+  background: #F0F0F0;
+  /*-moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);*/
+  color: #4f3639;
+  margin: auto auto;
+  margin-top: 2.5%;
+  min-width: 760px;
+  padding: 1.75%; /* 18px / 800px */
+  width: 72.5%;
+  border: 2px solid #E8E8E8;
+  min-height: 400px;
+  /*display: inline-block;*/
+}
 
-  #flash_alert {
-    color: rgba(195, 0, 0, 1);
-    font-size: 110%;
-    font-weight: bold;
-    font-style: italic;
-  }
+#flash_alert {
+  color: rgba(195, 0, 0, 1);
+  font-size: 110%;
+  font-weight: bold;
+  font-style: italic;
+}
 
-  .signed-in h2 {
-    color: rgba(195, 0, 0, 1);
- }
+.signed-in h2 {
+  color: black;
+  border-bottom: 2px solid black;
+  padding-bottom: 1%;
+  width: auto;
+}
 
- .hidden {
-   display: none;
- }
+.hidden {
+ display: none;
+}
+
+#click {
+ text-decoration: none;
+}
+
+.i-hide {
+ display: none;
+}
+
+a {
+ text-decoration: none;
+ color: rgba(20, 20, 20, 0.85);
+}
+
+a:hover {
+ text-decoration: none;
+ color: rgba(195, 0, 0, 1);
+ opacity: .55;
+}
+
+a:focus {
+ text-decoration: none;
+ color: rgba(20, 20, 20, 0.85);
+}
+
+#like-this-recipe {
+ -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+ -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+ box-shadow: 0 0 10px rgba(0,0,0,0.15);
+ color: #00BCE1;
+ font-size: 85%;
+ text-align: center;
+ margin: 3px auto;
+ max-width: 60px;
+ padding: 0.5%; /* 18px / 800px */
+ width: auto;
+ display: inline-block;
+ text-decoration: bold;
+ border: 1.25px solid #00BCE1;
+}
+
+#recipe-is-liked {
+ -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+ -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+ box-shadow: 0 0 10px rgba(0,0,0,0.15);
+ font-size: 85%;
+ text-align: center;
+ margin: 3px auto;
+ max-width: 60px;
+ padding: 0.5%; /* 18px / 800px */
+ width: auto;
+ display: inline-block;
+ text-decoration: none;
+ border: 1px solid #00BCE1;
+ background-color: #00BCE1;
+ color: white;
+}

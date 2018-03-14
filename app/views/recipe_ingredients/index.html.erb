@@ -3,6 +3,7 @@
   <% @recipes.each do |r| %>
     <ul>
       <li>
+        <%= binding.pry %>
         <%= link_to "#{r.name}", recipe_path(r), class: "nav-link" %>
       </li>
     </ul>

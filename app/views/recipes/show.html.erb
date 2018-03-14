@@ -1,16 +1,25 @@
-<h2><strong><%= @recipe.name.upcase %></strong></h2>
-<%= image_tag @recipe.recipe_avatar.url, class: "profile" %></br>
-<h5><strong>COOK TIME:</strong> <%= @recipe.recipe_cook_time %> </h5>
-<h5><strong>INGREDIENTS:</strong></h5><br>
-  <ul>
+<a href="#" id="next-recipe" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">NEXT RECIPE</a>
+
+<h2 id="recipeName"><strong><%= @recipe.name.upcase %></strong></h2>
+<p id="recipeAvatar"><%= image_tag @recipe.recipe_avatar.url, class: "profile" %></p></br>
+<p><strong>COOK TIME:</strong></p> <p id="recipeCookTime"> <%= @recipe.recipe_cook_time %> </p>
+<h5 ><strong>INGREDIENTS:</strong></h5><br>
+  <ul id="recipeIngredients">
     <% @recipe.ingredients.each do |i| %>
       <% @recin = RecipeIngredient.find_by(ingredient_id: i.id, recipe_id: @recipe.id)%>
     <li>
-      <p><strong><%= i.name.upcase %> - </strong><%= @recin.measurement %></p>
-      <%= link_to "VIEW INGREDIENT", ingredient_path(i) %>
-    </li>
+      <p><strong><%= link_to "#{i.name.upcase}", ingredient_path(i) %></strong> <strong>(</strong> <%= @recin.measurement %> <strong>)</strong>
+      </p>
+    </li></br>
     <% end %>
   </ul>
 <h5><strong>COOKING INSTRUCTIONS:</strong></h5>
-<p><%= @recipe.instructions %></p></br>
-<%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), class: "nav-link" %> || <%= link_to "DELETE", user_recipe_path(@user, @recipe), method: "delete", class: "nav-link" %>
+<p id="recipeInstructions"><%= @recipe.instructions %></p></br>
+<% if @recipe.likes.where(user_id: @user).empty? %>
+  <div class="recipe-like-status" id="like-this-recipe" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">LEARN</div> ||
+<% elsif @recipe.likes.where(user_id: @user).last.status === false %>
+  <div class="recipe-like-status" id="like-this-recipe" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">LEARN</div> ||
+<% else %>
+  <div class="recipe-like-status" id="recipe-is-liked" data-recipe-id="<%= @recipe.id %>" data-user-id="<%= @user.id %>">LOVED!</div> ||
+<% end %>
+<%= link_to "EDIT", edit_user_recipe_path(@user, @recipe), class: "nav-link"%> || <%= link_to "DELETE", user_recipe_path(@user, @recipe), method: "delete", class: "nav-link"%>
