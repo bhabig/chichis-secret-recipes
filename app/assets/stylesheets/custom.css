@@ -7,7 +7,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     background-color: white;
-    opacity: 0.90:
+    opacity: 0.90;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
